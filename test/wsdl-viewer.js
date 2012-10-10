@@ -1,6 +1,8 @@
 $(document).ready(function() {
     $(".porttitle").click(function() {
+        var portid = "#port-" + $(this).attr('id').match(/(\w+)$/gm);
         $(this).next(".portcontent").slideToggle(100);
+        $(portid).slideToggle(100);
     });
 });
 

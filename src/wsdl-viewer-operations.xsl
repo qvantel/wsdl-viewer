@@ -112,11 +112,13 @@
 -->
 <xsl:template match="ws:portType" mode="operations">
 <div>
-<xsl:if test="position() != last()">
-<xsl:attribute name="class">port</xsl:attribute>
-</xsl:if>
+<!--<xsl:if test="position() != last()">-->
+    <xsl:attribute name="class">port</xsl:attribute>
+    <xsl:attribute name="id"><xsl:value-of select="concat($PORT-PREFIX, generate-id(.))"/></xsl:attribute>
+    <xsl:if test="position() != last()"><xsl:attribute name="style">display: none;</xsl:attribute></xsl:if>
+<!--</xsl:if>-->
 <xsl:if test="$ENABLE-PORTTYPE-NAME">
-<span class="anchor" id="{concat($PORT-PREFIX, generate-id(.))}"></span>
+<span class="anchor" id="{concat($ANCHOR-PREFIX, generate-id(.))}"></span>
 <h3>
 	<xsl:value-of select="$PORT-TYPE-TEXT"/>
 	<xsl:text></xsl:text><b> <xsl:value-of select="@name"/> </b>

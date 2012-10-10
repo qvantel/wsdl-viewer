@@ -39,12 +39,8 @@
 	exclude-result-prefixes="ws ws2 xsd soap local">
 
 <xsl:template match="ws:service|ws2:service" mode="service-start">
-<!-- TODO: Remove when deemed unnecessary -->
-<!--	<div class="indent">-->
-<!--		<div class="label">Target Namespace:</div>-->
-<!--		<div class="value"><xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></div>-->
-<!--	</div>-->
-	<xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+    <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+	<div class="ports">Ports:</div>
 	<xsl:apply-templates select="ws:port|ws2:endpoint" mode="service"/>
 </xsl:template>
 
@@ -95,7 +91,7 @@
 <xsl:template match="ws2:interface" mode="service">
 	<h3>Interface <b><xsl:value-of select="@name" /></b>
         <xsl:if test="$ENABLE-LINK">
-        <xsl:text> </xsl:text><small><xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><a class="local" href="#{concat($PORT-PREFIX, generate-id(.))}"> <xsl:value-of select="$PORT-TYPE-TEXT"/></a></xsl:if> <xsl:call-template name="render.source-code-link"/></small>
+        <xsl:text> </xsl:text><small><xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><a class="local" href="#{concat($ANCHOR-PREFIX, generate-id(.))}"> <xsl:value-of select="$PORT-TYPE-TEXT"/></a></xsl:if> <xsl:call-template name="render.source-code-link"/></small>
         </xsl:if>
     </h3>
 
@@ -151,9 +147,12 @@
 	<xsl:variable name="port-type" select="$consolidated-wsdl/ws:portType[@name = $port-type-name]"/>
 
 
-    <div class="porttitle" id="#{concat($PORT-PREFIX, generate-id($port-type))}"><span class="portbold">Port: </span><xsl:value-of select="@name" />
-    </div>
+    <div class="porttitle" id="#{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">Port: <span class="portbold"><xsl:value-of select="@name" /></span></div>
+    
     <div class="portcontent" id="#{concat($PORT-CONTENT-PREFIX, generate-id($port-type))}">
+
+        <xsl:if test="position() != 1"><xsl:attribute name="style">display: none;</xsl:attribute></xsl:if>
+
         <xsl:if test="$ENABLE-LINK">
         <div class="label">Source code:</div>
         <div class="value"><xsl:call-template name="render.source-code-link"/></div>
@@ -167,8 +166,7 @@
 	    <xsl:apply-templates select="$binding" mode="service"/>
 
 	    <div class="operations_label">Operations:</div>
-	    <div class="operations_list"><xsl:text>
-    </xsl:text>
+	    <div class="operations_list"><xsl:text>    </xsl:text>
 		    <ol style="line-height: 180%;">
 			    <xsl:apply-templates select="$consolidated-wsdl/ws:portType[@name = $port-type-name]/ws:operation" mode="service">
 				    <xsl:sort select="@name"/>

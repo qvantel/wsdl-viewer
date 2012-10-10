@@ -182,9 +182,11 @@
 <xsl:variable name="SRC-PREFIX">src.</xsl:variable>
 <xsl:variable name="SRC-FILE-PREFIX">src.file.</xsl:variable>
 <xsl:variable name="OPERATIONS-PREFIX">op.</xsl:variable>
-<xsl:variable name="PORT-PREFIX">port.</xsl:variable>
+<xsl:variable name="PORT-PREFIX">port-</xsl:variable>
 <xsl:variable name="IFACE-PREFIX">iface.</xsl:variable>
-<xsl:variable name="PORT-CONTENT-PREFIX">port.cnt.</xsl:variable>
+<xsl:variable name="PORT-CONTENT-PREFIX">port-cnt-</xsl:variable>
+<xsl:variable name="PORT-TITLE-PREFIX">port-title-</xsl:variable>
+<xsl:variable name="ANCHOR-PREFIX">a.</xsl:variable>
 <xsl:variable name="global.wsdl-name" select="/*/*[(local-name() = 'import' or local-name() = 'include') and @location][1]/@location"/>
 <xsl:variable name="consolidated-wsdl" select="/* | document($global.wsdl-name)/*"/>
 <xsl:variable name="global.xsd-name" select="($consolidated-wsdl/*[local-name() = 'types']//xsd:import[@schemaLocation] | $consolidated-wsdl/*[local-name() = 'types']//xsd:include[@schemaLocation])[1]/@schemaLocation"/>
@@ -260,15 +262,33 @@ body {
 }
 
 .porttitle {
-    margin: 0px 10px 0px 10px;
+    margin: 5px 10px 5px 10px;
     padding: 5px;
-    font-size: 1.2em;
-    #portbold {
-        font-face: bold;
-    }    
-       
+    font-size: 14pt;
+    cursor: pointer;
 }
 
+.porttitle .portbold { font-weight: bold; }
+
+.portcontent {
+	margin: 2px 0 2px 20px;
+	width: 100%;
+}
+.portcontent .label {
+    text-align: left;
+}
+
+.ports {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 16pt;
+    width: 30%;
+    align: left;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #262626;
+    color: #262626;
+    
+}
 
 /**
 =========================================
@@ -553,19 +573,21 @@ html&gt;body #rightColumn {
 
 
 .description_label {
-    float: left;
-	width: 140px;
-	text-align: right;
-	font-weight: bold;
-	font-size: 15;
-/*	padding-bottom: .5em;*/
-	margin-right: 0;
-	color: darkblue;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+    width: 30%;
+	font-size: 16pt;
+	color: #262626;
 }
 
 .description_value {
-    color: black;
+    margin-left: 10px;
     padding-bottom: .5em;    
+    padding-top: 5px;
+    padding-bottom: 2em;
+    font-size: 12pt;
 }
 
 .operations_label {
@@ -693,15 +715,6 @@ html .floatcontainer {
 	Source code
 =========================================
 */
-
-.portcontent {
-	margin: 2px 0 2px 20px;
-
-}
-.portcontent .label {
-    text-align: left;
-}
-
 
 .xml-element, .xml-proc, .xml-comment {
 	margin: 2px 0;
@@ -930,12 +943,8 @@ h3 {
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 -->
 <xsl:template match="ws:service|ws2:service" mode="service-start">
-<!-- TODO: Remove when deemed unnecessary -->
-<!--	<div class="indent">-->
-<!--		<div class="label">Target Namespace:</div>-->
-<!--		<div class="value"><xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></div>-->
-<!--	</div>-->
-	<xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+    <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+	<div class="ports">Ports:</div>
 	<xsl:apply-templates select="ws:port|ws2:endpoint" mode="service"/>
 </xsl:template>
 <xsl:template match="ws2:endpoint" mode="service">
@@ -988,7 +997,7 @@ h3 {
         <xsl:text> </xsl:text>
 <small>
 <xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH">
-<a class="local" href="#{concat($PORT-PREFIX, generate-id(.))}"> <xsl:value-of select="$PORT-TYPE-TEXT"/>
+<a class="local" href="#{concat($ANCHOR-PREFIX, generate-id(.))}"> <xsl:value-of select="$PORT-TYPE-TEXT"/>
 </a>
 </xsl:if> <xsl:call-template name="render.source-code-link"/>
 </small>
@@ -1043,11 +1052,17 @@ h3 {
 	<xsl:variable name="port-type" select="$consolidated-wsdl/ws:portType[@name = $port-type-name]"/>
 
 
-    <div class="porttitle" id="#{concat($PORT-PREFIX, generate-id($port-type))}">
-<span class="portbold">Port: </span>
+    <div class="porttitle" id="#{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">Port: <span class="portbold">
 <xsl:value-of select="@name"/>
-    </div>
+</span>
+</div>
+    
     <div class="portcontent" id="#{concat($PORT-CONTENT-PREFIX, generate-id($port-type))}">
+
+        <xsl:if test="position() != 1">
+<xsl:attribute name="style">display: none;</xsl:attribute>
+</xsl:if>
+
         <xsl:if test="$ENABLE-LINK">
         <div class="label">Source code:</div>
         <div class="value">
@@ -1068,8 +1083,7 @@ h3 {
 
 	    <div class="operations_label">Operations:</div>
 	    <div class="operations_list">
-<xsl:text>
-    </xsl:text>
+<xsl:text>    </xsl:text>
 		    <ol style="line-height: 180%;">
 			    <xsl:apply-templates select="$consolidated-wsdl/ws:portType[@name = $port-type-name]/ws:operation" mode="service">
 				    <xsl:sort select="@name"/>
@@ -1205,11 +1219,17 @@ h3 {
 </xsl:template>
 <xsl:template match="ws:portType" mode="operations">
 <div>
-<xsl:if test="position() != last()">
-<xsl:attribute name="class">port</xsl:attribute>
+<!--<xsl:if test="position() != last()">-->
+    <xsl:attribute name="class">port</xsl:attribute>
+    <xsl:attribute name="id">
+<xsl:value-of select="concat($PORT-PREFIX, generate-id(.))"/>
+</xsl:attribute>
+    <xsl:if test="position() != last()">
+<xsl:attribute name="style">display: none;</xsl:attribute>
 </xsl:if>
+<!--</xsl:if>-->
 <xsl:if test="$ENABLE-PORTTYPE-NAME">
-<span class="anchor" id="{concat($PORT-PREFIX, generate-id(.))}"/>
+<span class="anchor" id="{concat($ANCHOR-PREFIX, generate-id(.))}"/>
 <h3>
 	<xsl:value-of select="$PORT-TYPE-TEXT"/>
 	<xsl:text/>

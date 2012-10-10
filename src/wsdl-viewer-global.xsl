@@ -72,9 +72,12 @@
 <xsl:variable name="SRC-PREFIX">src.</xsl:variable>
 <xsl:variable name="SRC-FILE-PREFIX">src.file.</xsl:variable>
 <xsl:variable name="OPERATIONS-PREFIX">op.</xsl:variable>
-<xsl:variable name="PORT-PREFIX">port.</xsl:variable>
+<xsl:variable name="PORT-PREFIX">port-</xsl:variable>
 <xsl:variable name="IFACE-PREFIX">iface.</xsl:variable>
-<xsl:variable name="PORT-CONTENT-PREFIX">port.cnt.</xsl:variable>
+<xsl:variable name="PORT-CONTENT-PREFIX">port-cnt-</xsl:variable>
+<xsl:variable name="PORT-TITLE-PREFIX">port-title-</xsl:variable>
+<xsl:variable name="ANCHOR-PREFIX">a.</xsl:variable>
+
 
 <!--
 ==================================================================

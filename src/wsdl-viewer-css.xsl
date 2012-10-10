@@ -90,15 +90,33 @@ body {
 }
 
 .porttitle {
-    margin: 0px 10px 0px 10px;
+    margin: 5px 10px 5px 10px;
     padding: 5px;
-    font-size: 1.2em;
-    #portbold {
-        font-face: bold;
-    }    
-       
+    font-size: 14pt;
+    cursor: pointer;
 }
 
+.porttitle .portbold { font-weight: bold; }
+
+.portcontent {
+	margin: 2px 0 2px 20px;
+	width: 100%;
+}
+.portcontent .label {
+    text-align: left;
+}
+
+.ports {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 16pt;
+    width: 30%;
+    align: left;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #262626;
+    color: #262626;
+    
+}
 
 /**
 =========================================
@@ -383,19 +401,21 @@ html>body #rightColumn {
 
 
 .description_label {
-    float: left;
-	width: 140px;
-	text-align: right;
-	font-weight: bold;
-	font-size: 15;
-/*	padding-bottom: .5em;*/
-	margin-right: 0;
-	color: darkblue;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+    width: 30%;
+	font-size: 16pt;
+	color: #262626;
 }
 
 .description_value {
-    color: black;
+    margin-left: 10px;
     padding-bottom: .5em;    
+    padding-top: 5px;
+    padding-bottom: 2em;
+    font-size: 12pt;
 }
 
 .operations_label {
@@ -523,15 +543,6 @@ html .floatcontainer {
 	Source code
 =========================================
 */
-
-.portcontent {
-	margin: 2px 0 2px 20px;
-
-}
-.portcontent .label {
-    text-align: left;
-}
-
 
 .xml-element, .xml-proc, .xml-comment {
 	margin: 2px 0;
