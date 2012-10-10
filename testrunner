@@ -1,0 +1,6 @@
+#!/bin/sh
+cd build
+ant
+cd ..
+xsltproc wsdl-viewer.xsl test/TimeService.wsdl > test/TimeService.html
+
