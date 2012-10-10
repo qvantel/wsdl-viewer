@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2013 (x64) (http://www.altova.com) by Antti Samila (Onesto Services oy) -->
+<!-- edited with XML Spy v5 beta 4 U (http://www.xmlspy.com) by Alexander Falk (Altova, Inc.) -->
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.Nanonull.com/TimeService/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.Nanonull.com/TimeService/">
+	<types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://www.Nanonull.com/TimeService/">
+			<s:element name="getUTCTime">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getUTCTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getUTCTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getOffesetUTCTime">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="hoursOffset" type="s:double"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getOffesetUTCTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getOffesetUTCTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getServerTime">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getServerTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getServerTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getServerTimeZone">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getServerTimeZoneResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getServerTimeZoneResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getServerCity">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getServerCityResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getServerCityResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getTimeZoneTime">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getTimeZoneTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getTimeZoneTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getCityTime">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="city" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getCityTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getCityTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="string" nillable="true" type="s:string"/>
+			<s:element name="errorResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="errorText" type="s:string"/>
+						<s:element minOccurs="0" maxOccurs="1" name="errorItem" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</types>
+	<message name="getUTCTimeSoapIn">
+		<part name="parameters" element="s0:getUTCTime"/>
+	</message>
+	<message name="getUTCTimeSoapOut">
+		<part name="parameters" element="s0:getUTCTimeResponse"/>
+	</message>
+	<message name="getOffesetUTCTimeSoapIn">
+		<part name="parameters" element="s0:getOffesetUTCTime"/>
+	</message>
+	<message name="getOffesetUTCTimeSoapOut">
+		<part name="parameters" element="s0:getOffesetUTCTimeResponse"/>
+	</message>
+	<message name="getServerTimeSoapIn">
+		<part name="parameters" element="s0:getServerTime"/>
+	</message>
+	<message name="getServerTimeSoapOut">
+		<part name="parameters" element="s0:getServerTimeResponse"/>
+	</message>
+	<message name="getServerTimeZoneSoapIn">
+		<part name="parameters" element="s0:getServerTimeZone"/>
+	</message>
+	<message name="getServerTimeZoneSoapOut">
+		<part name="parameters" element="s0:getServerTimeZoneResponse"/>
+	</message>
+	<message name="getServerCitySoapIn">
+		<part name="parameters" element="s0:getServerCity"/>
+	</message>
+	<message name="getServerCitySoapOut">
+		<part name="parameters" element="s0:getServerCityResponse"/>
+	</message>
+	<message name="getTimeZoneTimeSoapIn">
+		<part name="parameters" element="s0:getTimeZoneTime"/>
+	</message>
+	<message name="getTimeZoneTimeSoapOut">
+		<part name="parameters" element="s0:getTimeZoneTimeResponse"/>
+	</message>
+	<message name="getCityTimeSoapIn">
+		<part name="parameters" element="s0:getCityTime"/>
+	</message>
+	<message name="getCityTimeSoapOut">
+		<part name="parameters" element="s0:getCityTimeResponse"/>
+	</message>
+	<message name="getUTCTimeHttpGetIn"/>
+	<message name="getUTCTimeHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getOffesetUTCTimeHttpGetIn">
+		<part name="hoursOffset" type="s:string"/>
+	</message>
+	<message name="getOffesetUTCTimeHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getServerTimeHttpGetIn"/>
+	<message name="getServerTimeHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getServerTimeZoneHttpGetIn"/>
+	<message name="getServerTimeZoneHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getServerCityHttpGetIn"/>
+	<message name="getServerCityHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getTimeZoneTimeHttpGetIn">
+		<part name="timezone" type="s:string"/>
+	</message>
+	<message name="getTimeZoneTimeHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getCityTimeHttpGetIn">
+		<part name="city" type="s:string"/>
+	</message>
+	<message name="getCityTimeHttpGetOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getUTCTimeHttpPostIn"/>
+	<message name="getUTCTimeHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getOffesetUTCTimeHttpPostIn">
+		<part name="hoursOffset" type="s:string"/>
+	</message>
+	<message name="getOffesetUTCTimeHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getServerTimeHttpPostIn"/>
+	<message name="getServerTimeHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getServerTimeZoneHttpPostIn"/>
+	<message name="getServerTimeZoneHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getServerCityHttpPostIn"/>
+	<message name="getServerCityHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getTimeZoneTimeHttpPostIn">
+		<part name="timezone" type="s:string"/>
+	</message>
+	<message name="getTimeZoneTimeHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="getCityTimeHttpPostIn">
+		<part name="city" type="s:string"/>
+	</message>
+	<message name="getCityTimeHttpPostOut">
+		<part name="Body" element="s0:string"/>
+	</message>
+	<message name="errorSoapOut">
+		<part name="Error" element="s0:errorResponse"/>
+	</message>
+	<message name="errorHttpPostOut">
+		<part name="Error" element="s0:errorResponse"/>
+	</message>
+	<message name="errorHttpGetOut">
+		<part name="Error" element="s0:errorResponse"/>
+	</message>
+	<portType name="TimeServiceSoap">
+		<operation name="getUTCTime">
+			<input message="s0:getUTCTimeSoapIn"/>
+			<output message="s0:getUTCTimeSoapOut"/>
+		</operation>
+		<operation name="getOffesetUTCTime">
+			<input message="s0:getOffesetUTCTimeSoapIn"/>
+			<output message="s0:getOffesetUTCTimeSoapOut"/>
+		</operation>
+		<operation name="getServerTime">
+			<input message="s0:getServerTimeSoapIn"/>
+			<output message="s0:getServerTimeSoapOut"/>
+		</operation>
+		<operation name="getServerTimeZone">
+			<input message="s0:getServerTimeZoneSoapIn"/>
+			<output message="s0:getServerTimeZoneSoapOut"/>
+		</operation>
+		<operation name="getServerCity">
+			<input message="s0:getServerCitySoapIn"/>
+			<output message="s0:getServerCitySoapOut"/>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<input message="s0:getTimeZoneTimeSoapIn"/>
+			<output message="s0:getTimeZoneTimeSoapOut"/>
+			<fault name="FaultTimeZoneNotFound" message="s0:errorSoapOut"/>
+		</operation>
+		<operation name="getCityTime">
+			<input message="s0:getCityTimeSoapIn"/>
+			<output message="s0:getCityTimeSoapOut"/>
+			<fault name="FaultCityNotFound" message="s0:errorSoapOut"/>
+		</operation>
+	</portType>
+	<portType name="TimeServiceHttpGet">
+		<operation name="getUTCTime">
+			<input message="s0:getUTCTimeHttpGetIn"/>
+			<output message="s0:getUTCTimeHttpGetOut"/>
+		</operation>
+		<operation name="getOffesetUTCTime">
+			<input message="s0:getOffesetUTCTimeHttpGetIn"/>
+			<output message="s0:getOffesetUTCTimeHttpGetOut"/>
+		</operation>
+		<operation name="getServerTime">
+			<input message="s0:getServerTimeHttpGetIn"/>
+			<output message="s0:getServerTimeHttpGetOut"/>
+		</operation>
+		<operation name="getServerTimeZone">
+			<input message="s0:getServerTimeZoneHttpGetIn"/>
+			<output message="s0:getServerTimeZoneHttpGetOut"/>
+		</operation>
+		<operation name="getServerCity">
+			<input message="s0:getServerCityHttpGetIn"/>
+			<output message="s0:getServerCityHttpGetOut"/>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<input message="s0:getTimeZoneTimeHttpGetIn"/>
+			<output message="s0:getTimeZoneTimeHttpGetOut"/>
+			<fault name="FaultTimeZoneNotFound" message="s0:errorHttpGetOut"/>
+		</operation>
+		<operation name="getCityTime">
+			<input message="s0:getCityTimeHttpGetIn"/>
+			<output message="s0:getCityTimeHttpGetOut"/>
+			<fault name="FaultCityNotFound" message="s0:errorHttpGetOut"/>
+		</operation>
+	</portType>
+	<portType name="TimeServiceHttpPost">
+		<operation name="getUTCTime">
+			<input message="s0:getUTCTimeHttpPostIn"/>
+			<output message="s0:getUTCTimeHttpPostOut"/>
+		</operation>
+		<operation name="getOffesetUTCTime">
+			<input message="s0:getOffesetUTCTimeHttpPostIn"/>
+			<output message="s0:getOffesetUTCTimeHttpPostOut"/>
+		</operation>
+		<operation name="getServerTime">
+			<input message="s0:getServerTimeHttpPostIn"/>
+			<output message="s0:getServerTimeHttpPostOut"/>
+		</operation>
+		<operation name="getServerTimeZone">
+			<input message="s0:getServerTimeZoneHttpPostIn"/>
+			<output message="s0:getServerTimeZoneHttpPostOut"/>
+		</operation>
+		<operation name="getServerCity">
+			<input message="s0:getServerCityHttpPostIn"/>
+			<output message="s0:getServerCityHttpPostOut"/>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<input message="s0:getTimeZoneTimeHttpPostIn"/>
+			<output message="s0:getTimeZoneTimeHttpPostOut"/>
+			<fault name="FaultTimeZoneNotFound" message="s0:errorHttpPostOut"/>
+		</operation>
+		<operation name="getCityTime">
+			<input message="s0:getCityTimeHttpPostIn"/>
+			<output message="s0:getCityTimeHttpPostOut"/>
+			<fault name="FaultCityNotFound" message="s0:errorHttpPostOut"/>
+		</operation>
+	</portType>
+	<binding name="TimeServiceSoap" type="s0:TimeServiceSoap">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getUTCTime">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getUTCTime" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getOffesetUTCTime">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getOffesetUTCTime" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getServerTime">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getServerTime" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getServerTimeZone">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getServerTimeZone" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getServerCity">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getServerCity" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getTimeZoneTime" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="FaultTimeZoneNotFound">
+				<soap:fault name="FaultTimeZoneNotFound" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="getCityTime">
+			<soap:operation soapAction="http://www.Nanonull.com/TimeService/getCityTime" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="FaultCityNotFound">
+				<soap:fault name="FaultCityNotFound" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<binding name="TimeServiceHttpGet" type="s0:TimeServiceHttpGet">
+		<http:binding verb="GET"/>
+		<operation name="getUTCTime">
+			<http:operation location="/getUTCTime"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getOffesetUTCTime">
+			<http:operation location="/getOffesetUTCTime"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getServerTime">
+			<http:operation location="/getServerTime"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getServerTimeZone">
+			<http:operation location="/getServerTimeZone"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getServerCity">
+			<http:operation location="/getServerCity"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<http:operation location="/getTimeZoneTime"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+			<fault name="FaultTimeZoneNotFound">
+				<mime:mimeXml part="Error"/>
+			</fault>
+		</operation>
+		<operation name="getCityTime">
+			<http:operation location="/getCityTime"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+			<fault name="FaultCityNotFound">
+				<mime:mimeXml part="Error"/>
+			</fault>
+		</operation>
+	</binding>
+	<binding name="TimeServiceHttpPost" type="s0:TimeServiceHttpPost">
+		<http:binding verb="POST"/>
+		<operation name="getUTCTime">
+			<http:operation location="/getUTCTime"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getOffesetUTCTime">
+			<http:operation location="/getOffesetUTCTime"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getServerTime">
+			<http:operation location="/getServerTime"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getServerTimeZone">
+			<http:operation location="/getServerTimeZone"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getServerCity">
+			<http:operation location="/getServerCity"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<http:operation location="/getTimeZoneTime"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+			<fault name="FaultTimeZoneNotFound">
+				<mime:mimeXml part="Error"/>
+			</fault>
+		</operation>
+		<operation name="getCityTime">
+			<http:operation location="/getCityTime"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:mimeXml part="Body"/>
+			</output>
+			<fault name="FaultCityNotFound">
+				<mime:mimeXml part="Error"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="TimeService">
+		<documentation>A sample Time service - Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit. Mauris ut tellus quis odio
+                viverra luctus quis vitae urna. Nulla a porttitor est. Duis
+                pharetra quam in ipsum venenatis suscipit. Vestibulum blandit
+                pellentesque ultricies. Fusce bibendum ipsum et massa semper
+                vitae varius justo luctus. Cras vestibulum, est laoreet
+                venenatis ornare, ipsum lacus sagittis orci, in posuere augue
+                velit ac arcu. Phasellus consectetur, eros a consectetur
+                luctus, felis mauris vestibulum nulla, eget pharetra leo ligula
+                non risus.</documentation>
+		<port name="TimeServiceSoap" binding="s0:TimeServiceSoap">
+			<soap:address location="http://www.nanonull.com/TimeService/TimeService.asmx"/>
+		</port>
+		<port name="TimeServiceHttpGet" binding="s0:TimeServiceHttpGet">
+			<http:address location="http://www.nanonull.com/TimeService/TimeService.asmx"/>
+		</port>
+		<port name="TimeServiceHttpPost" binding="s0:TimeServiceHttpPost">
+			<http:address location="http://www.nanonull.com/TimeService/TimeService.asmx"/>
+		</port>
+	</service>
+</definitions>
