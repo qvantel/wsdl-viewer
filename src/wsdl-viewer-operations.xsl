@@ -121,8 +121,8 @@
 <span class="anchor" id="{concat($ANCHOR-PREFIX, generate-id(.))}"></span>
 <h3>
 	<xsl:value-of select="$PORT-TYPE-TEXT"/>
-	<xsl:text></xsl:text><b> <xsl:value-of select="@name"/> </b>
-	    <xsl:call-template name="render.source-code-link"/>
+	<xsl:text>: </xsl:text><b> <xsl:value-of select="@name"/> </b>
+	<span class="padder"/><xsl:call-template name="render.source-code-link"/>
 </h3>
 </xsl:if>
 <ol>
@@ -140,7 +140,7 @@
 <xsl:attribute name="class">operation</xsl:attribute>
 </xsl:if>
 <span class="anchor" id="{concat($OPERATIONS-PREFIX, generate-id(.))}"></span>
-<big><b><xsl:value-of select="@name"/></b></big>
+<div class="operation_title"><xsl:value-of select="@name"/></div>
 	<div class="value"><xsl:text>
 </xsl:text><xsl:call-template name="render.source-code-link"/></div>
 
@@ -226,7 +226,7 @@
 			<xsl:if test="$part"><xsl:text>, part = </xsl:text><xsl:value-of select="$part"/></xsl:if>
 			<xsl:text>)</xsl:text>
 		</xsl:if>
-		<xsl:call-template name="render.source-code-link"/>
+		<span class="padder"/><xsl:call-template name="render.source-code-link"/>
 	</div>
 
 	<xsl:apply-templates select="ws:part" mode="operations.message"/>

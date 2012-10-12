@@ -235,7 +235,7 @@
 -->
 <xsl:template name="title.render">
 	<div id="header">
-		<h1><xsl:value-of select="$html-title"/></h1>
+		<div id="headertitle"><xsl:value-of select="$html-title"/></div>
 		<div id="namespace"><p>Target namespace: <xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></p></div>
 	</div>
 </xsl:template>
@@ -332,7 +332,7 @@
 <xsl:template name="operations.render">
 <div class="page">
 	<a class="target" name="page.operations">
-		<h2>Operations</h2>
+		<div id="operations_title">Operations:</div>
 	</a>
 	<ul>
 		<xsl:apply-templates select="$consolidated-wsdl/ws:portType" mode="operations">

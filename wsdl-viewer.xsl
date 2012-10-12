@@ -232,40 +232,28 @@ body {
 	height: auto;
 	color: black;
 	background-color: teal;
-	font: normal 80%/120% Arial, Helvetica, sans-serif;
-}
-
-#flexbox {
-	display: box;
-	display: -webkit-box;
-	display: -moz-box;
-	
-	box-orient: horizontal;
-	-webkit-box-orient: horizontal;
-	-moz-box-orient; horizontal;
+	font: normal 80%/120% 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 #services {
     width: 450px;
-    box-ordinal-group: 1;
-    -webkit-box-ordinal-group: 1;
-    -moz-box-ordinal-group: 1;
-
     background-color: white;
-    color: black;
     border: 1px solid navy;
     overflow: auto;
     position: fixed;
-
-    top: 51px;
+    font-family: 'Open Sans';
+    color: #262626;
+    top: 101px;
     bottom: 0px;
 }
 
 .porttitle {
     margin: 5px 10px 5px 10px;
     padding: 5px;
+
     font-size: 14pt;
     cursor: pointer;
+
 }
 
 .porttitle .portbold { font-weight: bold; }
@@ -284,10 +272,15 @@ body {
     font-size: 16pt;
     width: 30%;
     align: left;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #262626;
     color: #262626;
     
+}
+
+.padder {
+    padding: 7px;
+    margin: 0;
 }
 
 /**
@@ -459,45 +452,64 @@ body {
 =========================================
 */
 #header {
+    font-family: 'Open Sans'
     padding: 0;
 	color: black;
-	background-color: #73d216;
+	background-color: #42fdff;
 	border: 1px solid darkred;
-	height: 50px;
+	height: 100px;
 	position: fixed;
     left: 0px;
     right: 0px;
 }
 
-#header h1 {
+#header #headertitle {
     float: left;
+    font-size: 23pt;
+    height: 100%;
+    padding-top: 70px;
+    padding-left: 10px;
+    vertical-align: bottom;
 }
+
 #header #namespace {
+    height: 100%;
     float: right;
-    margin-top: 20px;
     margin-right: 1em;
     text-align: right;
+    padding-top: 70px;
 }
 
 #content {
-/*
-    box-flex: 1;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-
-    box-ordinal-group: 2; 
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-*/
-	padding: 51px 20px 0 470px;
+	padding: 101px 20px 0 470px;
 	background-color: white;
 }
 
 #content .anchor {
     display: block;
-    height: 55px;
-    margin-top: -55px;
+    height: 105px;
+    margin-top: -105px;
     visibility: hidden;
+}
+
+#operations_title {
+    font-family: 'Open Sans';
+    width: 97%;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-size: 16pt;
+    color: #262626;
+    border-bottom: 1px solid #262626;
+}
+
+.operation_title {
+    font-family: 'Open Sans';
+    font-size: 12pt;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 #footer {
@@ -558,7 +570,7 @@ html&gt;body #rightColumn {
 
 .label {
     float: left;
-	width: 140px;
+	width: 145px;
 	text-align: right;
 	font-weight: bold;
 	padding-bottom: .5em;
@@ -573,9 +585,10 @@ html&gt;body #rightColumn {
 
 
 .description_label {
+    margin-top: 20px;
     margin-left: 10px;
     margin-bottom: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid;
     width: 30%;
 	font-size: 16pt;
@@ -588,6 +601,7 @@ html&gt;body #rightColumn {
     padding-top: 5px;
     padding-bottom: 2em;
     font-size: 12pt;
+    line-height: 14pt;
 }
 
 .operations_label {
@@ -624,7 +638,7 @@ strong, strong a {
 a.local:link,
 a.local:visited {
 	color: blue; 
-	margin-left: 10px;
+	margin-left: 0;
 	border-bottom: 1px dotted blue;
 	text-decoration: none;
 //	font-style: italic;
@@ -656,7 +670,7 @@ a.target:hover
 	padding: 6px;
 	color: black;
 	background-color: gainsboro;
-	border: 1px solid gray;
+	border: 1px dotted gray;
 }
 
 .shadow {
@@ -769,7 +783,7 @@ html .floatcontainer {
 */
 h1, h2, h3 {
 	margin: 10px 10px 2px;
-	font-family: Georgia, Times New Roman, Times, Serif;
+	font-family: 'Open Sans', Georgia, Times New Roman, Times, Serif;
 	font-weight: normal;
 	}
 
@@ -828,6 +842,27 @@ h3 {
 /* END print media definition
 }
 */
+
+/**
+=========================================
+	Fonts
+=========================================
+*/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Open Sans Light'),url('OpenSans-Light.ttf') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: bold;
+    font-weight: 100;
+    src: local('Open Sans Semibold'),url('OpenSans-Semibold.ttf') format('woff');
+}
+
 
 </xsl:variable>
 
@@ -1030,6 +1065,28 @@ h3 {
 	</div>
 </xsl:template>
 <xsl:template match="ws:port" mode="service">
+
+<xsl:variable name="collapsed-img">
+
+&lt;svg class="collapsed" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="8px" height="16px" viewbox="0 0 8 16" enable-background="new 0 0 8 16" xml:space="preserve"&gt;
+&lt;path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,16V0l8,8L0,16z"/&gt;
+&lt;/svg&gt;
+
+</xsl:variable>
+
+<xsl:variable name="expanded-img">
+
+&lt;svg class="expanded" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="8px" viewbox="0 0 16 8" enable-background="new 0 0 16 8" xml:space="preserve"&gt;
+&lt;path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,0h16L8,8L0,0z"/&gt;
+&lt;/svg&gt;
+
+</xsl:variable>
+
+
+
+
 	<xsl:variable name="binding-name">
 		<xsl:apply-templates select="@binding" mode="qname.normalized"/>
 	</xsl:variable>
@@ -1052,7 +1109,14 @@ h3 {
 	<xsl:variable name="port-type" select="$consolidated-wsdl/ws:portType[@name = $port-type-name]"/>
 
 
-    <div class="porttitle" id="#{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">Port: <span class="portbold">
+    <div class="porttitle" id="#{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">
+    <xsl:if test="position() != 1">
+<xsl:value-of select="$collapsed-img" disable-output-escaping="yes"/>
+</xsl:if>
+    <xsl:if test="position() = 1">
+<xsl:value-of select="$expanded-img" disable-output-escaping="yes"/>
+</xsl:if>
+    Port: <span class="portbold">
 <xsl:value-of select="@name"/>
 </span>
 </div>
@@ -1099,8 +1163,11 @@ h3 {
 </big>
 <xsl:if test="$ENABLE-LINK">
 		<xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH">
+<span class="padder"/>
 <a class="local" href="{concat('#', $OPERATIONS-PREFIX, generate-id(.))}">Detail</a>
-</xsl:if> <xsl:call-template name="render.source-code-link"/>
+</xsl:if>
+<span class="padder"/>
+<xsl:call-template name="render.source-code-link"/>
 </xsl:if>
 	</li>
 </xsl:template>
@@ -1232,9 +1299,10 @@ h3 {
 <span class="anchor" id="{concat($ANCHOR-PREFIX, generate-id(.))}"/>
 <h3>
 	<xsl:value-of select="$PORT-TYPE-TEXT"/>
-	<xsl:text/>
+	<xsl:text>: </xsl:text>
 <b> <xsl:value-of select="@name"/> </b>
-	    <xsl:call-template name="render.source-code-link"/>
+	<span class="padder"/>
+<xsl:call-template name="render.source-code-link"/>
 </h3>
 </xsl:if>
 <ol>
@@ -1251,11 +1319,9 @@ h3 {
 <xsl:attribute name="class">operation</xsl:attribute>
 </xsl:if>
 <span class="anchor" id="{concat($OPERATIONS-PREFIX, generate-id(.))}"/>
-<big>
-<b>
+<div class="operation_title">
 <xsl:value-of select="@name"/>
-</b>
-</big>
+</div>
 	<div class="value">
 <xsl:text>
 </xsl:text>
@@ -1359,7 +1425,8 @@ h3 {
 </xsl:if>
 			<xsl:text>)</xsl:text>
 		</xsl:if>
-		<xsl:call-template name="render.source-code-link"/>
+		<span class="padder"/>
+<xsl:call-template name="render.source-code-link"/>
 	</div>
 
 	<xsl:apply-templates select="ws:part" mode="operations.message"/>
@@ -2328,9 +2395,9 @@ h3 {
 
 <xsl:template name="title.render">
 	<div id="header">
-		<h1>
+		<div id="headertitle">
 <xsl:value-of select="$html-title"/>
-</h1>
+</div>
 		<div id="namespace">
 <p>Target namespace: <xsl:value-of select="$consolidated-wsdl/@targetNamespace"/>
 </p>
@@ -2477,7 +2544,7 @@ h3 {
 <xsl:template name="operations.render">
 <div class="page">
 	<a class="target" name="page.operations">
-		<h2>Operations</h2>
+		<div id="operations_title">Operations:</div>
 	</a>
 	<ul>
 		<xsl:apply-templates select="$consolidated-wsdl/ws:portType" mode="operations">

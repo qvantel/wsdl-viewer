@@ -125,6 +125,28 @@
 ==================================================================
 -->
 <xsl:template match="ws:port" mode="service">
+
+<xsl:variable name="collapsed-img">
+<![CDATA[
+<svg class="collapsed" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="8px" height="16px" viewbox="0 0 8 16" enable-background="new 0 0 8 16" xml:space="preserve">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,16V0l8,8L0,16z"/>
+</svg>
+]]>
+</xsl:variable>
+
+<xsl:variable name="expanded-img">
+<![CDATA[
+<svg class="expanded" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="8px" viewbox="0 0 16 8" enable-background="new 0 0 16 8" xml:space="preserve">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,0h16L8,8L0,0z"/>
+</svg>
+]]>
+</xsl:variable>
+
+
+
+
 	<xsl:variable name="binding-name">
 		<xsl:apply-templates select="@binding" mode="qname.normalized"/>
 	</xsl:variable>
@@ -147,7 +169,10 @@
 	<xsl:variable name="port-type" select="$consolidated-wsdl/ws:portType[@name = $port-type-name]"/>
 
 
-    <div class="porttitle" id="#{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">Port: <span class="portbold"><xsl:value-of select="@name" /></span></div>
+    <div class="porttitle" id="#{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">
+    <xsl:if test="position() != 1"><xsl:value-of select="$collapsed-img" disable-output-escaping="yes"/></xsl:if>
+    <xsl:if test="position() = 1"><xsl:value-of select="$expanded-img" disable-output-escaping="yes"/></xsl:if>
+    Port: <span class="portbold"><xsl:value-of select="@name" /></span></div>
     
     <div class="portcontent" id="#{concat($PORT-CONTENT-PREFIX, generate-id($port-type))}">
 
@@ -179,7 +204,7 @@
 <xsl:template match="ws:operation|ws2:operation" mode="service">
 	<li><big><xsl:value-of select="@name"/></big>
 <xsl:if test="$ENABLE-LINK">
-		<xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><a class="local" href="{concat('#', $OPERATIONS-PREFIX, generate-id(.))}">Detail</a></xsl:if> <xsl:call-template name="render.source-code-link"/>
+		<xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><span class="padder"/><a class="local" href="{concat('#', $OPERATIONS-PREFIX, generate-id(.))}">Detail</a></xsl:if><span class="padder"/><xsl:call-template name="render.source-code-link"/>
 </xsl:if>
 	</li>
 </xsl:template>
