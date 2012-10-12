@@ -60,40 +60,28 @@ body {
 	height: auto;
 	color: black;
 	background-color: teal;
-	font: normal 80%/120% Arial, Helvetica, sans-serif;
-}
-
-#flexbox {
-	display: box;
-	display: -webkit-box;
-	display: -moz-box;
-	
-	box-orient: horizontal;
-	-webkit-box-orient: horizontal;
-	-moz-box-orient; horizontal;
+	font: normal 80%/120% 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 #services {
     width: 450px;
-    box-ordinal-group: 1;
-    -webkit-box-ordinal-group: 1;
-    -moz-box-ordinal-group: 1;
-
     background-color: white;
-    color: black;
     border: 1px solid navy;
     overflow: auto;
     position: fixed;
-
-    top: 51px;
+    font-family: 'Open Sans';
+    color: #262626;
+    top: 101px;
     bottom: 0px;
 }
 
 .porttitle {
     margin: 5px 10px 5px 10px;
     padding: 5px;
+
     font-size: 14pt;
     cursor: pointer;
+
 }
 
 .porttitle .portbold { font-weight: bold; }
@@ -112,10 +100,15 @@ body {
     font-size: 16pt;
     width: 30%;
     align: left;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #262626;
     color: #262626;
     
+}
+
+.padder {
+    padding: 7px;
+    margin: 0;
 }
 
 /**
@@ -287,45 +280,64 @@ body {
 =========================================
 */
 #header {
+    font-family: 'Open Sans'
     padding: 0;
 	color: black;
-	background-color: #73d216;
+	background-color: #42fdff;
 	border: 1px solid darkred;
-	height: 50px;
+	height: 100px;
 	position: fixed;
     left: 0px;
     right: 0px;
 }
 
-#header h1 {
+#header #headertitle {
     float: left;
+    font-size: 23pt;
+    height: 100%;
+    padding-top: 70px;
+    padding-left: 10px;
+    vertical-align: bottom;
 }
+
 #header #namespace {
+    height: 100%;
     float: right;
-    margin-top: 20px;
     margin-right: 1em;
     text-align: right;
+    padding-top: 70px;
 }
 
 #content {
-/*
-    box-flex: 1;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-
-    box-ordinal-group: 2; 
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-*/
-	padding: 51px 20px 0 470px;
+	padding: 101px 20px 0 470px;
 	background-color: white;
 }
 
 #content .anchor {
     display: block;
-    height: 55px;
-    margin-top: -55px;
+    height: 105px;
+    margin-top: -105px;
     visibility: hidden;
+}
+
+#operations_title {
+    font-family: 'Open Sans';
+    width: 97%;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-size: 16pt;
+    color: #262626;
+    border-bottom: 1px solid #262626;
+}
+
+.operation_title {
+    font-family: 'Open Sans';
+    font-size: 12pt;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 #footer {
@@ -386,7 +398,7 @@ html>body #rightColumn {
 
 .label {
     float: left;
-	width: 140px;
+	width: 145px;
 	text-align: right;
 	font-weight: bold;
 	padding-bottom: .5em;
@@ -401,9 +413,10 @@ html>body #rightColumn {
 
 
 .description_label {
+    margin-top: 20px;
     margin-left: 10px;
     margin-bottom: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid;
     width: 30%;
 	font-size: 16pt;
@@ -416,6 +429,7 @@ html>body #rightColumn {
     padding-top: 5px;
     padding-bottom: 2em;
     font-size: 12pt;
+    line-height: 14pt;
 }
 
 .operations_label {
@@ -452,7 +466,7 @@ strong, strong a {
 a.local:link,
 a.local:visited {
 	color: blue; 
-	margin-left: 10px;
+	margin-left: 0;
 	border-bottom: 1px dotted blue;
 	text-decoration: none;
 //	font-style: italic;
@@ -484,7 +498,7 @@ a.target:hover
 	padding: 6px;
 	color: black;
 	background-color: gainsboro;
-	border: 1px solid gray;
+	border: 1px dotted gray;
 }
 
 .shadow {
@@ -597,7 +611,7 @@ html .floatcontainer {
 */
 h1, h2, h3 {
 	margin: 10px 10px 2px;
-	font-family: Georgia, Times New Roman, Times, Serif;
+	font-family: 'Open Sans', Georgia, Times New Roman, Times, Serif;
 	font-weight: normal;
 	}
 
@@ -656,6 +670,27 @@ h3 {
 /* END print media definition
 }
 */
+
+/**
+=========================================
+	Fonts
+=========================================
+*/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Open Sans Light'),url('OpenSans-Light.ttf') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: bold;
+    font-weight: 100;
+    src: local('Open Sans Semibold'),url('OpenSans-Semibold.ttf') format('woff');
+}
+
 ]]>
 </xsl:variable>
 
