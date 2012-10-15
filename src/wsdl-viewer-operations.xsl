@@ -233,7 +233,7 @@
 </xsl:template>
 
 <xsl:template match="ws:part" mode="operations.message">
-	<div class="value box" style="margin-bottom: 3px">
+	<div class="value box">
 		<xsl:choose>
 			<xsl:when test="string-length(@name) &gt; 0">
 				<b><xsl:value-of select="@name"/></b>

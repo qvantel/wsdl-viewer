@@ -1,29 +1,11 @@
 function collapse(element) {
     element.attr('class', 'collapsed');
-    element.attr('height', "16px");
-    element.attr('width', "8px");
-    element.attr('enable-background', "new 0 0 8 16");
-    element.each(function(index,node) {
-        node.viewBox.baseVal.x = 0;
-        node.viewBox.baseVal.y = 0;
-        node.viewBox.baseVal.width = 8;
-        node.viewBox.baseVal.height = 16;
-    });
     element.children('path').attr('d', "M0,16V0l8,8L0,16z");
 }
 
 function expand(element) {
     element.attr('class', 'expanded');
-    element.attr('height', "8px");
-    element.attr('width', "16px");
-    element.attr('enable-background', "new 0 0 16 8");
-    element.each(function(index,node) {
-        node.viewBox.baseVal.x = 0;
-        node.viewBox.baseVal.y = 0;
-        node.viewBox.baseVal.width = 16;
-        node.viewBox.baseVal.height = 8;
-    });
-    element.children('path').attr('d', "M0,0h16L8,8L0,0z");
+    element.children('path').attr('d', "M0,8h16l-8,8L0,8z");
     
 }
 
