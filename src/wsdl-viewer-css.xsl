@@ -78,8 +78,8 @@ body {
 .porttitle {
     margin: 5px 10px 5px 10px;
     padding: 5px;
-
     font-size: 14pt;
+    letter-spacing: 1px;
     cursor: pointer;
 
 }
@@ -98,6 +98,7 @@ body {
     margin-left: 10px;
     margin-bottom: 10px;
     font-size: 16pt;
+    letter-spacing: 1px;
     width: 30%;
     align: left;
     padding-bottom: 10px;
@@ -280,10 +281,11 @@ body {
 =========================================
 */
 #header {
-    font-family: 'Open Sans'
+    font-family: 'Open Sans';
     padding: 0;
 	color: black;
-	background-color: #42fdff;
+	background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQwIDQwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KICAgIDxyZWN0IHg9IjAiIHk9Ii0wLjEyNSIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwLjEyNSIvPgogICAgPHJlY3QgeD0iMTguMjA0IiB5PSItMy45NzciIHRyYW5zZm9ybT0ibWF0cml4KDAuNzA3MSAwLjcwNzEgLTAuNzA3MSAwLjcwNzEgMjUuMDg4NiAtMTAuODU5NikiIGZpbGw9IiNDRkNGQ0YiIHdpZHRoPSIxNC44OTYiIGhlaWdodD0iNTcuNjYiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiNDRkNGQ0YiIHBvaW50cz0iLTkuNTIsMzAuNjE5IC0yMC44MzMsMTkuMzA1IDE5LjkzOCwtMjEuNDY2IDMwLjg0MiwtOS44MTIgIi8+Cjwvc3ZnPgo=);
+	background-size: 5px;
 	border: 1px solid darkred;
 	height: 100px;
 	position: fixed;
@@ -294,14 +296,16 @@ body {
 #header #headertitle {
     float: left;
     font-size: 23pt;
+    letter-spacing: 2px;
     height: 100%;
-    padding-top: 70px;
+    padding-top: 65px;
     padding-left: 10px;
     vertical-align: bottom;
 }
 
 #header #namespace {
     height: 100%;
+    font-size: 12pt;
     float: right;
     margin-right: 1em;
     text-align: right;
@@ -338,6 +342,10 @@ body {
     margin-bottom: 10px;
     margin-top: 10px;
     padding-bottom: 10px;
+}
+
+.messageparts {
+    list-style: disc; 
 }
 
 #footer {
@@ -386,8 +394,7 @@ html>body #rightColumn {
 */
 
 .page {
-	border-bottom: 3px dotted navy;
-	margin: 0;
+	margin: 0 20px 0 0;
 	padding: 10px 0 20px 0;
 }
 
@@ -413,13 +420,12 @@ html>body #rightColumn {
 
 
 .description_label {
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin: 20px 0 10px 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid;
     width: 30%;
 	font-size: 16pt;
+	letter-spacing: 1px;
 	color: #262626;
 }
 
@@ -428,12 +434,13 @@ html>body #rightColumn {
     padding-bottom: .5em;    
     padding-top: 5px;
     padding-bottom: 2em;
-    font-size: 12pt;
+    font-size: 11pt;
     line-height: 14pt;
 }
 
 .operations_label {
     font-weight: bold;
+    letter-spacing: 1px;
     text-align: left;
     color: darkblue;
 }
@@ -443,6 +450,7 @@ html>body #rightColumn {
 	margin-left: 147px;
 	color: darkblue;
 	padding-bottom: .5em;
+	word-wrap: break-word;
 }
 
 .operations_list {
@@ -469,7 +477,7 @@ a.local:visited {
 	margin-left: 0;
 	border-bottom: 1px dotted blue;
 	text-decoration: none;
-//	font-style: italic;
+	font-style: italic;
 }
 
 a.local:hover {
@@ -495,9 +503,12 @@ a.target:hover
 */
 
 .box {
-	padding: 6px;
+	padding: 14px;
+	margin-bottom: 26px;
+	margin-top: 6px;
+	line-height: 1.5em;
 	color: black;
-	background-color: gainsboro;
+	background-color: #e9eff7;
 	border: 1px dotted gray;
 }
 
@@ -565,7 +576,7 @@ html .floatcontainer {
 
 .xml-element {
 	word-spacing: 3px;
-	color: red;
+	color: #cf3030;
 	font-weight: bold;
 	font-style:normal;
 	border-left: 1px dotted silver;

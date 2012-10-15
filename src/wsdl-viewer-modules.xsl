@@ -235,8 +235,8 @@
 -->
 <xsl:template name="title.render">
 	<div id="header">
-		<div id="headertitle"><xsl:value-of select="$html-title"/></div>
-		<div id="namespace"><p>Target namespace: <xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></p></div>
+		<div id="headertitle"><xsl:value-of select="translate($html-title, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></div>
+		<div id="namespace">Target namespace: <b><xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></b></div>
 	</div>
 </xsl:template>
 
@@ -311,9 +311,6 @@
 -->
 <xsl:template name="service.render">
 <div class="page">
-<!--	<a class="target" name="page.service">
-		<h2><xsl:value-of select="$html-title"/></h2>
-	</a>-->
 	<xsl:apply-templates select="$consolidated-wsdl/*[local-name(.) = 'documentation']" mode="documentation.render"/>
 	<xsl:apply-templates select="$consolidated-wsdl/ws:service|$consolidated-wsdl/ws2:service" mode="service-start"/>
 	<xsl:if test="not($consolidated-wsdl/*[local-name() = 'service']/@name)">
@@ -331,7 +328,9 @@
 -->
 <xsl:template name="operations.render">
 <div class="page">
-	<a class="target" name="page.operations">
+    <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+
+    <a class="target" name="page.operations">
 		<div id="operations_title">Operations:</div>
 	</a>
 	<ul>

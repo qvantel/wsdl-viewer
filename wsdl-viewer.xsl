@@ -250,8 +250,8 @@ body {
 .porttitle {
     margin: 5px 10px 5px 10px;
     padding: 5px;
-
     font-size: 14pt;
+    letter-spacing: 1px;
     cursor: pointer;
 
 }
@@ -270,6 +270,7 @@ body {
     margin-left: 10px;
     margin-bottom: 10px;
     font-size: 16pt;
+    letter-spacing: 1px;
     width: 30%;
     align: left;
     padding-bottom: 10px;
@@ -452,10 +453,11 @@ body {
 =========================================
 */
 #header {
-    font-family: 'Open Sans'
+    font-family: 'Open Sans';
     padding: 0;
 	color: black;
-	background-color: #42fdff;
+	background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQwIDQwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KICAgIDxyZWN0IHg9IjAiIHk9Ii0wLjEyNSIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwLjEyNSIvPgogICAgPHJlY3QgeD0iMTguMjA0IiB5PSItMy45NzciIHRyYW5zZm9ybT0ibWF0cml4KDAuNzA3MSAwLjcwNzEgLTAuNzA3MSAwLjcwNzEgMjUuMDg4NiAtMTAuODU5NikiIGZpbGw9IiNDRkNGQ0YiIHdpZHRoPSIxNC44OTYiIGhlaWdodD0iNTcuNjYiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiNDRkNGQ0YiIHBvaW50cz0iLTkuNTIsMzAuNjE5IC0yMC44MzMsMTkuMzA1IDE5LjkzOCwtMjEuNDY2IDMwLjg0MiwtOS44MTIgIi8+Cjwvc3ZnPgo=);
+	background-size: 5px;
 	border: 1px solid darkred;
 	height: 100px;
 	position: fixed;
@@ -466,14 +468,16 @@ body {
 #header #headertitle {
     float: left;
     font-size: 23pt;
+    letter-spacing: 2px;
     height: 100%;
-    padding-top: 70px;
+    padding-top: 65px;
     padding-left: 10px;
     vertical-align: bottom;
 }
 
 #header #namespace {
     height: 100%;
+    font-size: 12pt;
     float: right;
     margin-right: 1em;
     text-align: right;
@@ -510,6 +514,10 @@ body {
     margin-bottom: 10px;
     margin-top: 10px;
     padding-bottom: 10px;
+}
+
+.messageparts {
+    list-style: disc; 
 }
 
 #footer {
@@ -558,8 +566,7 @@ html&gt;body #rightColumn {
 */
 
 .page {
-	border-bottom: 3px dotted navy;
-	margin: 0;
+	margin: 0 20px 0 0;
 	padding: 10px 0 20px 0;
 }
 
@@ -585,13 +592,12 @@ html&gt;body #rightColumn {
 
 
 .description_label {
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin: 20px 0 10px 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid;
     width: 30%;
 	font-size: 16pt;
+	letter-spacing: 1px;
 	color: #262626;
 }
 
@@ -600,12 +606,13 @@ html&gt;body #rightColumn {
     padding-bottom: .5em;    
     padding-top: 5px;
     padding-bottom: 2em;
-    font-size: 12pt;
+    font-size: 11pt;
     line-height: 14pt;
 }
 
 .operations_label {
     font-weight: bold;
+    letter-spacing: 1px;
     text-align: left;
     color: darkblue;
 }
@@ -615,6 +622,7 @@ html&gt;body #rightColumn {
 	margin-left: 147px;
 	color: darkblue;
 	padding-bottom: .5em;
+	word-wrap: break-word;
 }
 
 .operations_list {
@@ -641,7 +649,7 @@ a.local:visited {
 	margin-left: 0;
 	border-bottom: 1px dotted blue;
 	text-decoration: none;
-//	font-style: italic;
+	font-style: italic;
 }
 
 a.local:hover {
@@ -667,9 +675,12 @@ a.target:hover
 */
 
 .box {
-	padding: 6px;
+	padding: 14px;
+	margin-bottom: 26px;
+	margin-top: 6px;
+	line-height: 1.5em;
 	color: black;
-	background-color: gainsboro;
+	background-color: #e9eff7;
 	border: 1px dotted gray;
 }
 
@@ -737,7 +748,7 @@ html .floatcontainer {
 
 .xml-element {
 	word-spacing: 3px;
-	color: red;
+	color: #cf3030;
 	font-weight: bold;
 	font-style:normal;
 	border-left: 1px dotted silver;
@@ -1069,7 +1080,7 @@ h3 {
 <xsl:variable name="collapsed-img">
 
 &lt;svg class="collapsed" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="8px" height="16px" viewbox="0 0 8 16" enable-background="new 0 0 8 16" xml:space="preserve"&gt;
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"&gt;
 &lt;path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,16V0l8,8L0,16z"/&gt;
 &lt;/svg&gt;
 
@@ -1078,8 +1089,8 @@ h3 {
 <xsl:variable name="expanded-img">
 
 &lt;svg class="expanded" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="16px" height="8px" viewbox="0 0 16 8" enable-background="new 0 0 16 8" xml:space="preserve"&gt;
-&lt;path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,0h16L8,8L0,0z"/&gt;
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"&gt;
+&lt;path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,8h16l-8,8L0,8z"/&gt;
 &lt;/svg&gt;
 
 </xsl:variable>
@@ -1432,7 +1443,7 @@ h3 {
 	<xsl:apply-templates select="ws:part" mode="operations.message"/>
 </xsl:template>
 <xsl:template match="ws:part" mode="operations.message">
-	<div class="value box" style="margin-bottom: 3px">
+	<div class="value box">
 		<xsl:choose>
 			<xsl:when test="string-length(@name) &gt; 0">
 				<b>
@@ -1630,7 +1641,7 @@ h3 {
 </xsl:template>
 <xsl:template match="xsd:sequence" mode="operations.message.part">
 	<xsl:param name="anti.recursion"/>
-	<ul type="square">
+	<ul class="messageparts">
 		<xsl:apply-templates select="*" mode="operations.message.part">
 			<xsl:with-param name="anti.recursion" select="$anti.recursion"/>
 		</xsl:apply-templates>
@@ -2396,11 +2407,11 @@ h3 {
 <xsl:template name="title.render">
 	<div id="header">
 		<div id="headertitle">
-<xsl:value-of select="$html-title"/>
+<xsl:value-of select="translate($html-title, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
 </div>
-		<div id="namespace">
-<p>Target namespace: <xsl:value-of select="$consolidated-wsdl/@targetNamespace"/>
-</p>
+		<div id="namespace">Target namespace: <b>
+<xsl:value-of select="$consolidated-wsdl/@targetNamespace"/>
+</b>
 </div>
 	</div>
 </xsl:template>
@@ -2514,12 +2525,6 @@ h3 {
 
 <xsl:template name="service.render">
 <div class="page">
-
-
-<!--	<a class="target" name="page.service">
-		<h2><xsl:value-of select="$html-title"/></h2>
-	</a>-->
-
 	<xsl:apply-templates select="$consolidated-wsdl/*[local-name(.) = 'documentation']" mode="documentation.render"/>
 	<xsl:apply-templates select="$consolidated-wsdl/ws:service|$consolidated-wsdl/ws2:service" mode="service-start"/>
 	<xsl:if test="not($consolidated-wsdl/*[local-name() = 'service']/@name)">
@@ -2543,7 +2548,9 @@ h3 {
 
 <xsl:template name="operations.render">
 <div class="page">
-	<a class="target" name="page.operations">
+    <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+
+    <a class="target" name="page.operations">
 		<div id="operations_title">Operations:</div>
 	</a>
 	<ul>
