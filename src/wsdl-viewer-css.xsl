@@ -60,7 +60,7 @@ body {
 	height: auto;
 	color: black;
 	background-color: teal;
-	font: normal 80%/120% 'Open Sans', Arial, Helvetica, sans-serif;
+	font: normal 80%/120% 'Open Sans', sans-serif;
 }
 
 #services {
@@ -95,8 +95,7 @@ body {
 }
 
 .ports {
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin: 20px 0 10px 10px;
     font-size: 16pt;
     letter-spacing: 1px;
     width: 30%;
@@ -188,95 +187,6 @@ body {
 
 /**
 =========================================
-	Navigation tabs
-=========================================
-*/
-
-#outer_nav {
-	background-color: yellow;
-	padding: 0;
-	margin: 0;
-}
-
-#nav {
-	height: 100%;
-	width: auto;
-	margin: 0;
-	padding: 0;
-	background-color: gainsboro;
-	border-top: 1px solid gray;
-	border-bottom: 3px solid gray;
-	z-index: 100;
-	font: bold 90%/120% Arial, Helvetica, sans-serif;
-	letter-spacing: 2px;
-} 
-
-#nav ul { 
-	background-color: gainsboro;
-	height: auto;
-	width: auto;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	z-index: 100;
-
-	border: 1px solid silver; 
-	border-top-color: black; 
-	border-width: 1px 0 9px; 
-} 
-
-#nav li { 
-	display: inline; 
-	padding: 0;
-	margin: 0;
-} 
-
-#nav a { 
-	position: relative;
-	top: 3px;
-	float:left; 
-	width:auto; 
-	padding: 8px 10px 6px 10px;
-	margin: 3px 3px 0;
-	border: 1px solid gray; 
-	border-width: 2px 2px 3px 2px;
-
-	color: black; 
-	background-color: silver; 
-	text-decoration:none; 
-	text-transform: uppercase;
-}
-
-#nav a:hover { 
-	margin-top: 1px;
-	padding-top: 9px;
-	padding-bottom: 7px;
-	color: blue;
-	background-color: gainsboro;
-} 
-
-#nav a.current:link,
-#nav a.current:visited,
-#nav a.current:hover {
-	background: white; 
-	color: black; 
-	text-shadow:none; 
-	margin-top: 0;
-	padding-top: 11px;
-	padding-bottom: 9px;
-	border-bottom-width: 0;
-	border-color: red; 
-}
-
-#nav a:active { 
-	background-color: silver; 
-	color: white;
-} 
-
-
-
-/**
-=========================================
 	Content
 =========================================
 */
@@ -284,9 +194,11 @@ body {
     font-family: 'Open Sans';
     padding: 0;
 	color: black;
-	background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQwIDQwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KICAgIDxyZWN0IHg9IjAiIHk9Ii0wLjEyNSIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwLjEyNSIvPgogICAgPHJlY3QgeD0iMTguMjA0IiB5PSItMy45NzciIHRyYW5zZm9ybT0ibWF0cml4KDAuNzA3MSAwLjcwNzEgLTAuNzA3MSAwLjcwNzEgMjUuMDg4NiAtMTAuODU5NikiIGZpbGw9IiNDRkNGQ0YiIHdpZHRoPSIxNC44OTYiIGhlaWdodD0iNTcuNjYiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiNDRkNGQ0YiIHBvaW50cz0iLTkuNTIsMzAuNjE5IC0yMC44MzMsMTkuMzA1IDE5LjkzOCwtMjEuNDY2IDMwLjg0MiwtOS44MTIgIi8+Cjwvc3ZnPgo=);
-	background-size: 5px;
-	border: 1px solid darkred;
+	background-image: url(data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAADnC86AAAAvElEQVRYhcXWuw6DMBQDUNOJkYn//72ytBts6YKEQIHkPux6t468eXh/VngzT6O7+/qLunw3JxxU4VscVz1wimqGs1QbnKga4Fy1F05Xu2CG2oZJagPmqU8wVb2F2WodFqgVWKNeYZl6gpXqAYvVHdarAIZSil5F5HNF1HkanXBQhW9xXPXAKaoZzlJtcKJqgHPVXjhd7YIZahsmqQ2Ypz7BVPUWZqt1WKBWYI16hWXqCVaqByxWd1ivAvgB8Ed7G+ZZfiYAAAAASUVORK5CYII=);
+	background-size: 8px auto;
+	background-color: white;
+	background-repeat: repeat;
+	border: 1px solid #262626;
 	height: 100px;
 	position: fixed;
     left: 0px;
@@ -691,16 +603,23 @@ h3 {
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
-    font-weight: 100;
-    src: local('Open Sans Light'),url('OpenSans-Light.ttf') format('woff');
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTYnF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Open Sans';
     font-style: bold;
-    font-weight: 100;
-    src: local('Open Sans Semibold'),url('OpenSans-Semibold.ttf') format('woff');
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSonF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
 }
+ 
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrfB31yxOzP-czbf6AAKCVo.ttf) format('truetype');
+} 
 
 ]]>
 </xsl:variable>
