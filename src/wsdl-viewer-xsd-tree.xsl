@@ -185,7 +185,7 @@
 
 <xsl:template match="xsd:sequence" mode="operations.message.part">
 	<xsl:param name="anti.recursion"/>
-	<ul type="square">
+	<ul class="messageparts">
 		<xsl:apply-templates select="*" mode="operations.message.part">
 			<xsl:with-param name="anti.recursion" select="$anti.recursion"/>
 		</xsl:apply-templates>

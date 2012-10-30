@@ -3,4 +3,4 @@ cd build
 ant
 cd ..
 xsltproc wsdl-viewer.xsl test/TimeService.wsdl > test/TimeService.html
-
+xsltproc wsdl-viewer.xsl test/TimeService20.wsdl > test/TimeService20.html

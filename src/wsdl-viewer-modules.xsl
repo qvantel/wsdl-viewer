@@ -164,12 +164,13 @@
 
 <xsl:include href="wsdl-viewer-global.xsl"/>
 <xsl:include href="wsdl-viewer-css.xsl"/>
-
+<xsl:include href="wsdl-viewer-js.xsl"/>
 <xsl:include href="wsdl-viewer-util.xsl"/>
 <xsl:include href="wsdl-viewer-service.xsl"/>
 <xsl:include href="wsdl-viewer-operations.xsl"/>
 <xsl:include href="wsdl-viewer-xsd-tree.xsl"/>
 <xsl:include href="wsdl-viewer-src.xsl"/>
+<xsl:include href="wsdl-viewer-jquery-min.xsl"/>
 
 
 <!--
@@ -201,10 +202,8 @@
 	<meta name="MSSmartTagsPreventParsing" content="true" />
 
 	<style type="text/css"><xsl:value-of select="$css" disable-output-escaping="yes" /></style>
-    <script src="jquery-1.8.2.min.js" type="text/javascript" language="javascript"></script>
-	<script src="wsdl-viewer.js" type="text/javascript" language="javascript"> <xsl:comment><xsl:text>
-	// </xsl:text></xsl:comment>
-	</script>
+    <script type="text/javascript" language="javascript"><xsl:value-of select="$jquery" disable-output-escaping="yes" /></script>
+	<script type="text/javascript" language="javascript"><xsl:value-of select="$js" disable-output-escaping="yes" /></script>
 </head>
 </xsl:template>
 
@@ -215,16 +214,10 @@
 -->
 <xsl:template name="body.render">
 <body id="operations">
-<!--<div id="outer_box"><div id="inner_box" onload="pagingInit()">-->
 	<xsl:call-template name="title.render"/>
-<!-- TODO: pages with tabs for selecting some aspect of the WSDL
-	<xsl:call-template name="navig.render"/>
--->
     <xsl:call-template name="services.render"/>
     <xsl:call-template name="content.render"/>
-
 	<xsl:call-template name="footer.render"/>
-<!--</div></div>-->
 </body>
 </xsl:template>
 
@@ -235,29 +228,9 @@
 -->
 <xsl:template name="title.render">
 	<div id="header">
-		<h1><xsl:value-of select="$html-title"/></h1>
-		<div id="namespace"><p>Target namespace: <xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></p></div>
+		<div id="headertitle"><xsl:value-of select="translate($html-title, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></div>
+		<div id="namespace">Target namespace: <b><xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></b></div>
 	</div>
-</xsl:template>
-
-<!--
-==================================================================
-	Rendering: navigation
-==================================================================
--->
-<xsl:template name="navig.render">
-<!--<div id="outer_nav">-->
-<!--	<div id="nav" class="floatcontainer">-->
-		<ul>
-			<li id="nav-service"><a href="#page.service">Service</a></li>
-			<li id="nav-operations"><a href="#page.operations">Operations</a></li>
-			<li id="nav-wsdl"><a href="#page.src">Source Code</a></li>
-<!--			<li id="nav-client"><a href="#TODO-1">Client</a></li>
--->
-			<li id="nav-about"><a href="#page.about" class="current">About</a></li>
-		</ul>
-<!--	</div>-->
-<!--</div>-->
 </xsl:template>
 
 <!--
@@ -311,9 +284,6 @@
 -->
 <xsl:template name="service.render">
 <div class="page">
-<!--	<a class="target" name="page.service">
-		<h2><xsl:value-of select="$html-title"/></h2>
-	</a>-->
 	<xsl:apply-templates select="$consolidated-wsdl/*[local-name(.) = 'documentation']" mode="documentation.render"/>
 	<xsl:apply-templates select="$consolidated-wsdl/ws:service|$consolidated-wsdl/ws2:service" mode="service-start"/>
 	<xsl:if test="not($consolidated-wsdl/*[local-name() = 'service']/@name)">
@@ -331,8 +301,10 @@
 -->
 <xsl:template name="operations.render">
 <div class="page">
-	<a class="target" name="page.operations">
-		<h2>Operations</h2>
+    <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+
+    <a class="target" name="page.operations">
+		<div id="operations_title">Operations:</div>
 	</a>
 	<ul>
 		<xsl:apply-templates select="$consolidated-wsdl/ws:portType" mode="operations">

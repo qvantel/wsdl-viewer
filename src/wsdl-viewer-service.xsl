@@ -39,12 +39,9 @@
 	exclude-result-prefixes="ws ws2 xsd soap local">
 
 <xsl:template match="ws:service|ws2:service" mode="service-start">
-<!-- TODO: Remove when deemed unnecessary -->
-<!--	<div class="indent">-->
-<!--		<div class="label">Target Namespace:</div>-->
-<!--		<div class="value"><xsl:value-of select="$consolidated-wsdl/@targetNamespace" /></div>-->
-<!--	</div>-->
-	<xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+    <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
+    <xsl:if test="ws:port"><div class="ports">Ports:</div></xsl:if>
+    <xsl:if test="ws2:endpoint"><div class="ports">Interfaces:</div></xsl:if>
 	<xsl:apply-templates select="ws:port|ws2:endpoint" mode="service"/>
 </xsl:template>
 
@@ -65,6 +62,8 @@
 		<xsl:choose>
 			<xsl:when test="starts-with($binding-type, 'http://schemas.xmlsoap.org/wsdl/soap')">SOAP 1.1</xsl:when>
 			<xsl:when test="starts-with($binding-type, 'http://www.w3.org/2005/08/wsdl/soap')">SOAP 1.2</xsl:when>
+			<xsl:when test="starts-with($binding-type, 'http://www.w3.org/2007/06/wsdl/soap')">SOAP 1.2</xsl:when>
+			<xsl:when test="starts-with($binding-type, 'http://www.w3.org/ns/wsdl/soap')">SOAP</xsl:when>
 			<xsl:when test="starts-with($binding-type, 'http://schemas.xmlsoap.org/wsdl/mime')">MIME</xsl:when>
 			<xsl:when test="starts-with($binding-type, 'http://schemas.xmlsoap.org/wsdl/http')">HTTP</xsl:when>
 			<xsl:otherwise>Unknown</xsl:otherwise>
@@ -76,12 +75,12 @@
 			<xsl:otherwise></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
-    <div class="indent">
-	    <div class="label">Location:</div>
-	    <div class="value"><xsl:value-of select="@address" /></div>
+	<div class="portcontent">
+        <div class="label">Location:</div>
+        <div class="value"><xsl:value-of select="@address" /></div>
 
-	    <div class="label">Protocol:</div>
-	    <div class="value"><xsl:value-of select="$protocol"/></div>
+        <div class="label">Protocol:</div>
+        <div class="value"><xsl:value-of select="$protocol"/></div>
     </div>
 	<xsl:apply-templates select="$binding" mode="service"/>
 
@@ -93,33 +92,32 @@
 </xsl:template>
 
 <xsl:template match="ws2:interface" mode="service">
-	<h3>Interface <b><xsl:value-of select="@name" /></b>
-        <xsl:if test="$ENABLE-LINK">
-        <xsl:text> </xsl:text><small><xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><a class="local" href="#{concat($PORT-PREFIX, generate-id(.))}"> <xsl:value-of select="$PORT-TYPE-TEXT"/></a></xsl:if> <xsl:call-template name="render.source-code-link"/></small>
-        </xsl:if>
-    </h3>
 
+	<div class="porttitle">Interface: <span class="portbold"><xsl:value-of select="@name" /></span></div>
 	<xsl:variable name="base-iface-name">
 		<xsl:apply-templates select="@extends" mode="qname.normalized"/>
 	</xsl:variable>
-    <div class="indent">
-	    <xsl:if test="$base-iface-name">
-		    <div class="label">Extends: </div>
-		    <div class="value"><xsl:value-of select="$base-iface-name"/></div>
-	    </xsl:if>
+    <div class="portcontent">
+        <xsl:if test="$ENABLE-LINK">
+            <div class="label">Source Code: </div>
+            <div class="value"><xsl:call-template name="render.source-code-link"/></div>
+        </xsl:if>
+        <xsl:if test="$base-iface-name and $base-iface-name != ''">
+	        <div class="label">Extends: </div>
+	        <div class="value"><xsl:value-of select="$base-iface-name"/></div>
+        </xsl:if>
 
-	    <xsl:variable name="base-iface" select="$consolidated-wsdl/ws2:interface[@name = $base-iface-name]"/>
-
-	    <div class="operations_label">Operations:</div>
-	    <div class="operations_list"><xsl:text></xsl:text>
+        <xsl:variable name="base-iface" select="$consolidated-wsdl/ws2:interface[@name = $base-iface-name]"/>
+	    <div class="label">Operations:</div>
+	    <div class="value"><br/></div>
+        <div class="operations_list"><xsl:text>   </xsl:text>
+		    <ol style="line-height: 180%;">
+			    <xsl:apply-templates select="$base-iface/ws2:operation | ws2:operation" mode="service">
+				    <xsl:sort select="@name"/>
+			    </xsl:apply-templates>
+		    </ol>
+	    </div>
     </div>
-
-		<ol style="line-height: 180%;">
-			<xsl:apply-templates select="$base-iface/ws2:operation | ws2:operation" mode="service">
-				<xsl:sort select="@name"/>
-			</xsl:apply-templates>
-		</ol>
-	</div>
 </xsl:template>
 
 
@@ -129,6 +127,25 @@
 ==================================================================
 -->
 <xsl:template match="ws:port" mode="service">
+
+<xsl:variable name="collapsed-img">
+<![CDATA[
+<svg class="collapsed" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,16V0l8,8L0,16z"/>
+</svg>
+]]>
+</xsl:variable>
+
+<xsl:variable name="expanded-img">
+<![CDATA[
+<svg class="expanded" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,8h16l-8,8L0,8z"/>
+</svg>
+]]>
+</xsl:variable>
+
 	<xsl:variable name="binding-name">
 		<xsl:apply-templates select="@binding" mode="qname.normalized"/>
 	</xsl:variable>
@@ -143,17 +160,18 @@
 			<xsl:otherwise>unknown</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
-
 	<xsl:variable name="port-type-name">
 		<xsl:apply-templates select="$binding/@type" mode="qname.normalized"/>
 	</xsl:variable>
-
 	<xsl:variable name="port-type" select="$consolidated-wsdl/ws:portType[@name = $port-type-name]"/>
+    <div class="porttitle" id="{concat($PORT-TITLE-PREFIX, generate-id($port-type))}">
+    <xsl:if test="position() != 1"><xsl:value-of select="$collapsed-img" disable-output-escaping="yes"/></xsl:if>
+    <xsl:if test="position() = 1"><xsl:value-of select="$expanded-img" disable-output-escaping="yes"/></xsl:if>
+    Port: <span class="portbold"><xsl:value-of select="@name" /></span></div>
+    <div class="portcontent" id="{concat($PORT-CONTENT-PREFIX, generate-id($port-type))}">
 
+        <xsl:if test="position() != 1"><xsl:attribute name="style">display: none;</xsl:attribute></xsl:if>
 
-    <div class="porttitle" id="#{concat($PORT-PREFIX, generate-id($port-type))}"><span class="portbold">Port: </span><xsl:value-of select="@name" />
-    </div>
-    <div class="portcontent" id="#{concat($PORT-CONTENT-PREFIX, generate-id($port-type))}">
         <xsl:if test="$ENABLE-LINK">
         <div class="label">Source code:</div>
         <div class="value"><xsl:call-template name="render.source-code-link"/></div>
@@ -166,9 +184,9 @@
 
 	    <xsl:apply-templates select="$binding" mode="service"/>
 
-	    <div class="operations_label">Operations:</div>
-	    <div class="operations_list"><xsl:text>
-    </xsl:text>
+	    <div class="label">Operations:</div>
+	    <div class="value"><br/></div>
+	    <div class="operations_list"><xsl:text>    </xsl:text>
 		    <ol style="line-height: 180%;">
 			    <xsl:apply-templates select="$consolidated-wsdl/ws:portType[@name = $port-type-name]/ws:operation" mode="service">
 				    <xsl:sort select="@name"/>
@@ -181,7 +199,7 @@
 <xsl:template match="ws:operation|ws2:operation" mode="service">
 	<li><big><xsl:value-of select="@name"/></big>
 <xsl:if test="$ENABLE-LINK">
-		<xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><a class="local" href="{concat('#', $OPERATIONS-PREFIX, generate-id(.))}">Detail</a></xsl:if> <xsl:call-template name="render.source-code-link"/>
+		<xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><span class="padder"/><a class="local" href="{concat('#', $OPERATIONS-PREFIX, generate-id(.))}">Detail</a></xsl:if><span class="padder"/><xsl:call-template name="render.source-code-link"/>
 </xsl:if>
 	</li>
 </xsl:template>
