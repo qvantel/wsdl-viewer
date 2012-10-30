@@ -48,9 +48,8 @@
 	<xsl:if test="$ENABLE-PORTTYPE-NAME">
 	<h3>
 	    <span class="anchor" id="{concat($IFACE-PREFIX, generate-id(.))}"></span>
-		<xsl:value-of select="$IFACE-TEXT"/><xsl:text>
-</xsl:text><b> <xsl:value-of select="@name"/> </b>
-		<xsl:call-template name="render.source-code-link"/>
+		<xsl:value-of select="$IFACE-TEXT"/><xsl:text> </xsl:text>
+		<b><xsl:value-of select="@name"/></b><span class="padder"/><xsl:call-template name="render.source-code-link"/>
 	</h3>
 	</xsl:if>
 
@@ -68,10 +67,9 @@
 <xsl:attribute name="class">operation</xsl:attribute>
 </xsl:if>
 <span class="anchor" name="{concat($OPERATIONS-PREFIX, generate-id(.))}"></span>
-<big><b>
-    <xsl:value-of select="@name"/></b></big>
-	<div class="value"><xsl:text>
-</xsl:text><xsl:call-template name="render.source-code-link"/></div>
+
+    <div class="operation_title"><xsl:value-of select="@name"/></div>
+	<div class="value"><xsl:call-template name="render.source-code-link"/></div>
 	<xsl:apply-templates select="ws2:documentation" mode="documentation.render"/>
 
 	<xsl:if test="$ENABLE-STYLEOPTYPEPATH">

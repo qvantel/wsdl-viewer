@@ -41,6 +41,7 @@
 <xsl:template match="ws:service|ws2:service" mode="service-start">
     <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
     <xsl:if test="ws:port"><div class="ports">Ports:</div></xsl:if>
+    <xsl:if test="ws2:endpoint"><div class="ports">Interfaces:</div></xsl:if>
 	<xsl:apply-templates select="ws:port|ws2:endpoint" mode="service"/>
 </xsl:template>
 
@@ -61,6 +62,8 @@
 		<xsl:choose>
 			<xsl:when test="starts-with($binding-type, 'http://schemas.xmlsoap.org/wsdl/soap')">SOAP 1.1</xsl:when>
 			<xsl:when test="starts-with($binding-type, 'http://www.w3.org/2005/08/wsdl/soap')">SOAP 1.2</xsl:when>
+			<xsl:when test="starts-with($binding-type, 'http://www.w3.org/2007/06/wsdl/soap')">SOAP 1.2</xsl:when>
+			<xsl:when test="starts-with($binding-type, 'http://www.w3.org/ns/wsdl/soap')">SOAP</xsl:when>
 			<xsl:when test="starts-with($binding-type, 'http://schemas.xmlsoap.org/wsdl/mime')">MIME</xsl:when>
 			<xsl:when test="starts-with($binding-type, 'http://schemas.xmlsoap.org/wsdl/http')">HTTP</xsl:when>
 			<xsl:otherwise>Unknown</xsl:otherwise>
@@ -72,11 +75,13 @@
 			<xsl:otherwise></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
-    <div class="label">Location:</div>
-    <div class="value"><xsl:value-of select="@address" /></div>
+	<div class="portcontent">
+        <div class="label">Location:</div>
+        <div class="value"><xsl:value-of select="@address" /></div>
 
-    <div class="label">Protocol:</div>
-    <div class="value"><xsl:value-of select="$protocol"/></div>
+        <div class="label">Protocol:</div>
+        <div class="value"><xsl:value-of select="$protocol"/></div>
+    </div>
 	<xsl:apply-templates select="$binding" mode="service"/>
 
 	<xsl:variable name="iface-name">
@@ -87,30 +92,32 @@
 </xsl:template>
 
 <xsl:template match="ws2:interface" mode="service">
-	<h3>Interface <b><xsl:value-of select="@name" /></b>
-        <xsl:if test="$ENABLE-LINK">
-        <xsl:text> </xsl:text><small><xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><span class="padder"/><a class="local" href="#{concat($ANCHOR-PREFIX, generate-id(.))}"><xsl:value-of select="$PORT-TYPE-TEXT"/></a></xsl:if><span class="padder"/><xsl:call-template name="render.source-code-link"/></small>
-        </xsl:if>
-    </h3>
 
+	<div class="porttitle">Interface: <span class="portbold"><xsl:value-of select="@name" /></span></div>
 	<xsl:variable name="base-iface-name">
 		<xsl:apply-templates select="@extends" mode="qname.normalized"/>
 	</xsl:variable>
-    <xsl:if test="$base-iface-name">
-	    <div class="label">Extends: </div>
-	    <div class="value"><xsl:value-of select="$base-iface-name"/></div>
-    </xsl:if>
+    <div class="portcontent">
+        <xsl:if test="$ENABLE-LINK">
+            <div class="label">Source Code: </div>
+            <div class="value"><xsl:call-template name="render.source-code-link"/></div>
+        </xsl:if>
+        <xsl:if test="$base-iface-name and $base-iface-name != ''">
+	        <div class="label">Extends: </div>
+	        <div class="value"><xsl:value-of select="$base-iface-name"/></div>
+        </xsl:if>
 
-    <xsl:variable name="base-iface" select="$consolidated-wsdl/ws2:interface[@name = $base-iface-name]"/>
-
-    <div class="operations_label">Operations:</div>
-    <div class="operations_list"><xsl:text></xsl:text>
-		<ol style="line-height: 180%;">
-			<xsl:apply-templates select="$base-iface/ws2:operation | ws2:operation" mode="service">
-				<xsl:sort select="@name"/>
-			</xsl:apply-templates>
-		</ol>
-	</div>
+        <xsl:variable name="base-iface" select="$consolidated-wsdl/ws2:interface[@name = $base-iface-name]"/>
+	    <div class="label">Operations:</div>
+	    <div class="value"><br/></div>
+        <div class="operations_list"><xsl:text>   </xsl:text>
+		    <ol style="line-height: 180%;">
+			    <xsl:apply-templates select="$base-iface/ws2:operation | ws2:operation" mode="service">
+				    <xsl:sort select="@name"/>
+			    </xsl:apply-templates>
+		    </ol>
+	    </div>
+    </div>
 </xsl:template>
 
 
@@ -177,7 +184,8 @@
 
 	    <xsl:apply-templates select="$binding" mode="service"/>
 
-	    <div class="operations_label">Operations:</div>
+	    <div class="label">Operations:</div>
+	    <div class="value"><br/></div>
 	    <div class="operations_list"><xsl:text>    </xsl:text>
 		    <ol style="line-height: 180%;">
 			    <xsl:apply-templates select="$consolidated-wsdl/ws:portType[@name = $port-type-name]/ws:operation" mode="service">
