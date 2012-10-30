@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (x64) (http://www.altova.com) by Antti Samila (Onesto Services oy) -->
+<description targetNamespace="http://www.Nanonull.com/TimeService/" xmlns="http://www.w3.org/ns/wsdl" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.Nanonull.com/TimeService/" xmlns:whttp="http://www.w3.org/ns/wsdl/http" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://www.Nanonull.com/TimeService/">
+			<s:element name="getUTCTime">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getUTCTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getUTCTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getOffsetUTCTime">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="hoursOffset" type="s:double"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getOffsetUTCTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getOffsetUTCTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getServerTime">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getServerTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getServerTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getServerTimeZone">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getServerTimeZoneResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getServerTimeZoneResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getServerCity">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getServerCityResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getServerCityResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getTimeZoneTime">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getTimeZoneTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getTimeZoneTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getCityTime">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="city" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getCityTimeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getCityTimeResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="string" nillable="true" type="s:string"/>
+			<s:element name="errorResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="errorText" type="s:string"/>
+						<s:element minOccurs="0" maxOccurs="1" name="errorItem" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</types>
+	<interface name="TimeServiceface">
+		<operation name="getUTCTime">
+			<input messageLabel="In" element="s0:getUTCTime"/>
+			<output messageLabel="Out" element="s0:getUTCTimeResponse"/>
+		</operation>
+		<operation name="getOffsetUTCTime">
+			<input messageLabel="In" element="s0:getOffsetUTCTime"/>
+			<output messageLabel="Out" element="s0:getOffsetUTCTimeResponse"/>
+		</operation>
+		<operation name="getServerTime">
+			<input messageLabel="In" element="s0:getServerTime"/>
+			<output messageLabel="Out" element="s0:getServerTimeResponse"/>
+		</operation>
+		<operation name="getServerTimeZone">
+			<input messageLabel="In" element="s0:getServerTimeZone"/>
+			<output messageLabel="Out" element="s0:getServerTimeZoneResponse"/>
+		</operation>
+		<operation name="getServerCity">
+			<input messageLabel="In" element="s0:getServerCity"/>
+			<output messageLabel="Out" element="s0:getServerCityResponse"/>
+		</operation>
+		<operation name="getTimeZoneTime">
+			<input messageLabel="In" element="s0:getTimeZoneTime"/>
+			<output messageLabel="Out" element="s0:getTimeZoneTimeResponse"/>
+			<outfault ref="s0:FaultTimeZoneNotFound" message="FaultTimeZoneNotFound"/>
+		</operation>
+		<operation name="getCityTime">
+			<input messageLabel="In" element="s0:getCityTime"/>
+			<output messageLabel="Out" element="s0:getCityTimeResponse"/>
+			<outfault ref="s0:FaultCityNotFound" message="FaultCityNotFound"/>
+		</operation>
+		<fault name="FaultTimeZoneNotFound" element="s0:errorResponse"/>
+		<fault name="FaultCityNotFound" element="s0:errorResponse"/>
+	</interface>
+	<binding name="TimeServiceSoap" interface="s0:TimeServiceface" type="http://www.w3.org/ns/wsdl/soap" wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP/" wsoap:mepDefault="http://www.w3.org/2003/05/soap/mep/request-response/">
+		<operation ref="s0:getUTCTime" wsoap:action="http://www.Nanonull.com/TimeService/getUTCTime"/>
+		<operation ref="s0:getOffsetUTCTime" wsoap:action="http://www.Nanonull.com/TimeService/getOffsetUTCTime"/>
+		<operation ref="s0:getServerTime" wsoap:action="http://www.Nanonull.com/TimeService/getServerTime"/>
+		<operation ref="s0:getServerTimeZone" wsoap:action="http://www.Nanonull.com/TimeService/getServerTimeZone"/>
+		<operation ref="s0:getServerCity" wsoap:action="http://www.Nanonull.com/TimeService/getServerCity"/>
+		<operation ref="s0:getTimeZoneTime" wsoap:action="http://www.Nanonull.com/TimeService/getTimeZoneTime"/>
+		<operation ref="s0:getCityTime" wsoap:action="http://www.Nanonull.com/TimeService/getCityTime"/>
+		<fault ref="s0:FaultTimeZoneNotFound"/>
+		<fault ref="s0:FaultCityNotFound"/>
+	</binding>
+	<service name="TimeService" interface="s0:TimeServiceface">
+		<documentation>A sample Time service</documentation>
+		<endpoint name="TimeServiceSoap" binding="s0:TimeServiceSoap" address="http://www.Nanonull.com/TimeService/TimeService.asmx"/>
+	</service>
+</description>

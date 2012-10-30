@@ -60,45 +60,56 @@ body {
 	height: auto;
 	color: black;
 	background-color: teal;
-	font: normal 80%/120% Arial, Helvetica, sans-serif;
-}
-
-#flexbox {
-	display: box;
-	display: -webkit-box;
-	display: -moz-box;
-	
-	box-orient: horizontal;
-	-webkit-box-orient: horizontal;
-	-moz-box-orient; horizontal;
+	font: normal 80%/120% 'Open Sans', sans-serif;
 }
 
 #services {
     width: 450px;
-    box-ordinal-group: 1;
-    -webkit-box-ordinal-group: 1;
-    -moz-box-ordinal-group: 1;
-
     background-color: white;
-    color: black;
     border: 1px solid navy;
     overflow: auto;
     position: fixed;
-
-    top: 51px;
+    font-family: 'Open Sans';
+    color: #262626;
+    top: 101px;
     bottom: 0px;
 }
 
 .porttitle {
-    margin: 0px 10px 0px 10px;
+    margin: 5px 10px 5px 10px;
     padding: 5px;
-    font-size: 1.2em;
-    #portbold {
-        font-face: bold;
-    }    
-       
+    font-size: 14pt;
+    letter-spacing: 1px;
+    cursor: pointer;
+
 }
 
+.porttitle .portbold { font-weight: bold; }
+
+.portcontent {
+	margin: 2px 0 2px 20px;
+	width: 100%;
+}
+.portcontent .label {
+    text-align: left;
+}
+
+.ports {
+    margin: 20px 0 10px 10px;
+    font-size: 16pt;
+    letter-spacing: 1px;
+    width: 30%;
+    align: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #262626;
+    color: #262626;
+    
+}
+
+.padder {
+    padding: 7px;
+    margin: 0;
+}
 
 /**
 =========================================
@@ -176,138 +187,77 @@ body {
 
 /**
 =========================================
-	Navigation tabs
-=========================================
-*/
-
-#outer_nav {
-	background-color: yellow;
-	padding: 0;
-	margin: 0;
-}
-
-#nav {
-	height: 100%;
-	width: auto;
-	margin: 0;
-	padding: 0;
-	background-color: gainsboro;
-	border-top: 1px solid gray;
-	border-bottom: 3px solid gray;
-	z-index: 100;
-	font: bold 90%/120% Arial, Helvetica, sans-serif;
-	letter-spacing: 2px;
-} 
-
-#nav ul { 
-	background-color: gainsboro;
-	height: auto;
-	width: auto;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	z-index: 100;
-
-	border: 1px solid silver; 
-	border-top-color: black; 
-	border-width: 1px 0 9px; 
-} 
-
-#nav li { 
-	display: inline; 
-	padding: 0;
-	margin: 0;
-} 
-
-#nav a { 
-	position: relative;
-	top: 3px;
-	float:left; 
-	width:auto; 
-	padding: 8px 10px 6px 10px;
-	margin: 3px 3px 0;
-	border: 1px solid gray; 
-	border-width: 2px 2px 3px 2px;
-
-	color: black; 
-	background-color: silver; 
-	text-decoration:none; 
-	text-transform: uppercase;
-}
-
-#nav a:hover { 
-	margin-top: 1px;
-	padding-top: 9px;
-	padding-bottom: 7px;
-	color: blue;
-	background-color: gainsboro;
-} 
-
-#nav a.current:link,
-#nav a.current:visited,
-#nav a.current:hover {
-	background: white; 
-	color: black; 
-	text-shadow:none; 
-	margin-top: 0;
-	padding-top: 11px;
-	padding-bottom: 9px;
-	border-bottom-width: 0;
-	border-color: red; 
-}
-
-#nav a:active { 
-	background-color: silver; 
-	color: white;
-} 
-
-
-
-/**
-=========================================
 	Content
 =========================================
 */
 #header {
+    font-family: 'Open Sans';
     padding: 0;
 	color: black;
-	background-color: #73d216;
-	border: 1px solid darkred;
-	height: 50px;
+	background-image: url(data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAADnC86AAAAvElEQVRYhcXWuw6DMBQDUNOJkYn//72ytBts6YKEQIHkPux6t468eXh/VngzT6O7+/qLunw3JxxU4VscVz1wimqGs1QbnKga4Fy1F05Xu2CG2oZJagPmqU8wVb2F2WodFqgVWKNeYZl6gpXqAYvVHdarAIZSil5F5HNF1HkanXBQhW9xXPXAKaoZzlJtcKJqgHPVXjhd7YIZahsmqQ2Ypz7BVPUWZqt1WKBWYI16hWXqCVaqByxWd1ivAvgB8Ed7G+ZZfiYAAAAASUVORK5CYII=);
+	background-size: 8px auto;
+	background-color: white;
+	background-repeat: repeat;
+	border: 1px solid #262626;
+	height: 100px;
 	position: fixed;
     left: 0px;
     right: 0px;
 }
 
-#header h1 {
+#header #headertitle {
     float: left;
+    font-size: 23pt;
+    letter-spacing: 2px;
+    height: 100%;
+    padding-top: 65px;
+    padding-left: 10px;
+    vertical-align: bottom;
 }
+
 #header #namespace {
+    height: 100%;
+    font-size: 12pt;
     float: right;
-    margin-top: 20px;
     margin-right: 1em;
     text-align: right;
+    padding-top: 70px;
 }
 
 #content {
-/*
-    box-flex: 1;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-
-    box-ordinal-group: 2; 
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-*/
-	padding: 51px 20px 0 470px;
+	padding: 101px 20px 0 470px;
 	background-color: white;
 }
 
 #content .anchor {
     display: block;
-    height: 55px;
-    margin-top: -55px;
+    height: 105px;
+    margin-top: -105px;
     visibility: hidden;
+}
+
+#operations_title {
+    font-family: 'Open Sans';
+    width: 97%;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-size: 16pt;
+    color: #262626;
+    border-bottom: 1px solid #262626;
+}
+
+.operation_title {
+    font-family: 'Open Sans';
+    font-size: 12pt;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.messageparts {
+    list-style: disc; 
 }
 
 #footer {
@@ -356,8 +306,7 @@ html>body #rightColumn {
 */
 
 .page {
-	border-bottom: 3px dotted navy;
-	margin: 0;
+	margin: 0 20px 0 0;
 	padding: 10px 0 20px 0;
 }
 
@@ -368,7 +317,7 @@ html>body #rightColumn {
 
 .label {
     float: left;
-	width: 140px;
+	width: 145px;
 	text-align: right;
 	font-weight: bold;
 	padding-bottom: .5em;
@@ -383,23 +332,27 @@ html>body #rightColumn {
 
 
 .description_label {
-    float: left;
-	width: 140px;
-	text-align: right;
-	font-weight: bold;
-	font-size: 15;
-/*	padding-bottom: .5em;*/
-	margin-right: 0;
-	color: darkblue;
+    margin: 20px 0 10px 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+    width: 30%;
+	font-size: 16pt;
+	letter-spacing: 1px;
+	color: #262626;
 }
 
 .description_value {
-    color: black;
+    margin-left: 10px;
     padding-bottom: .5em;    
+    padding-top: 5px;
+    padding-bottom: 2em;
+    font-size: 11pt;
+    line-height: 14pt;
 }
 
 .operations_label {
     font-weight: bold;
+    letter-spacing: 1px;
     text-align: left;
     color: darkblue;
 }
@@ -409,6 +362,7 @@ html>body #rightColumn {
 	margin-left: 147px;
 	color: darkblue;
 	padding-bottom: .5em;
+	word-wrap: break-word;
 }
 
 .operations_list {
@@ -432,10 +386,10 @@ strong, strong a {
 a.local:link,
 a.local:visited {
 	color: blue; 
-	margin-left: 10px;
+	margin-left: 0;
 	border-bottom: 1px dotted blue;
 	text-decoration: none;
-//	font-style: italic;
+	font-style: italic;
 }
 
 a.local:hover {
@@ -461,10 +415,13 @@ a.target:hover
 */
 
 .box {
-	padding: 6px;
+	padding: 14px;
+	margin-bottom: 26px;
+	margin-top: 6px;
+	line-height: 1.5em;
 	color: black;
-	background-color: gainsboro;
-	border: 1px solid gray;
+	background-color: #e9eff7;
+	border: 1px dotted gray;
 }
 
 .shadow {
@@ -524,15 +481,6 @@ html .floatcontainer {
 =========================================
 */
 
-.portcontent {
-	margin: 2px 0 2px 20px;
-
-}
-.portcontent .label {
-    text-align: left;
-}
-
-
 .xml-element, .xml-proc, .xml-comment {
 	margin: 2px 0;
 	padding: 2px 0 2px 0;
@@ -540,7 +488,7 @@ html .floatcontainer {
 
 .xml-element {
 	word-spacing: 3px;
-	color: red;
+	color: #cf3030;
 	font-weight: bold;
 	font-style:normal;
 	border-left: 1px dotted silver;
@@ -586,7 +534,7 @@ html .floatcontainer {
 */
 h1, h2, h3 {
 	margin: 10px 10px 2px;
-	font-family: Georgia, Times New Roman, Times, Serif;
+	font-family: 'Open Sans', Georgia, Times New Roman, Times, Serif;
 	font-weight: normal;
 	}
 
@@ -645,6 +593,34 @@ h3 {
 /* END print media definition
 }
 */
+
+/**
+=========================================
+	Fonts
+=========================================
+*/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTYnF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: bold;
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSonF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+}
+ 
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrfB31yxOzP-czbf6AAKCVo.ttf) format('truetype');
+} 
+
 ]]>
 </xsl:variable>
 
