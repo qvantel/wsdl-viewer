@@ -40,7 +40,7 @@
 
 <xsl:template match="ws:service|ws2:service" mode="service-start">
     <xsl:apply-templates select="*[local-name(.) = 'documentation']" mode="documentation.render"/>
-	<div class="ports">Ports:</div>
+    <xsl:if test="ws:port"><div class="ports">Ports:</div></xsl:if>
 	<xsl:apply-templates select="ws:port|ws2:endpoint" mode="service"/>
 </xsl:template>
 
@@ -72,13 +72,11 @@
 			<xsl:otherwise></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
-    <div class="indent">
-	    <div class="label">Location:</div>
-	    <div class="value"><xsl:value-of select="@address" /></div>
+    <div class="label">Location:</div>
+    <div class="value"><xsl:value-of select="@address" /></div>
 
-	    <div class="label">Protocol:</div>
-	    <div class="value"><xsl:value-of select="$protocol"/></div>
-    </div>
+    <div class="label">Protocol:</div>
+    <div class="value"><xsl:value-of select="$protocol"/></div>
 	<xsl:apply-templates select="$binding" mode="service"/>
 
 	<xsl:variable name="iface-name">
@@ -91,25 +89,22 @@
 <xsl:template match="ws2:interface" mode="service">
 	<h3>Interface <b><xsl:value-of select="@name" /></b>
         <xsl:if test="$ENABLE-LINK">
-        <xsl:text> </xsl:text><small><xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><a class="local" href="#{concat($ANCHOR-PREFIX, generate-id(.))}"> <xsl:value-of select="$PORT-TYPE-TEXT"/></a></xsl:if> <xsl:call-template name="render.source-code-link"/></small>
+        <xsl:text> </xsl:text><small><xsl:if test="$ENABLE-OPERATIONS-PARAGRAPH"><span class="padder"/><a class="local" href="#{concat($ANCHOR-PREFIX, generate-id(.))}"><xsl:value-of select="$PORT-TYPE-TEXT"/></a></xsl:if><span class="padder"/><xsl:call-template name="render.source-code-link"/></small>
         </xsl:if>
     </h3>
 
 	<xsl:variable name="base-iface-name">
 		<xsl:apply-templates select="@extends" mode="qname.normalized"/>
 	</xsl:variable>
-    <div class="indent">
-	    <xsl:if test="$base-iface-name">
-		    <div class="label">Extends: </div>
-		    <div class="value"><xsl:value-of select="$base-iface-name"/></div>
-	    </xsl:if>
+    <xsl:if test="$base-iface-name">
+	    <div class="label">Extends: </div>
+	    <div class="value"><xsl:value-of select="$base-iface-name"/></div>
+    </xsl:if>
 
-	    <xsl:variable name="base-iface" select="$consolidated-wsdl/ws2:interface[@name = $base-iface-name]"/>
+    <xsl:variable name="base-iface" select="$consolidated-wsdl/ws2:interface[@name = $base-iface-name]"/>
 
-	    <div class="operations_label">Operations:</div>
-	    <div class="operations_list"><xsl:text></xsl:text>
-    </div>
-
+    <div class="operations_label">Operations:</div>
+    <div class="operations_list"><xsl:text></xsl:text>
 		<ol style="line-height: 180%;">
 			<xsl:apply-templates select="$base-iface/ws2:operation | ws2:operation" mode="service">
 				<xsl:sort select="@name"/>
@@ -143,9 +138,6 @@
 </svg>
 ]]>
 </xsl:variable>
-
-
-
 
 	<xsl:variable name="binding-name">
 		<xsl:apply-templates select="@binding" mode="qname.normalized"/>
