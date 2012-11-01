@@ -22,4 +22,4 @@ Processed
 
 Ubuntu example:
 > sudo apt-get install xsltproc
-> > xsltproc wsdl-viewer.xsl your.wsdl > your.html
+> xsltproc wsdl-viewer.xsl your.wsdl > your.html
