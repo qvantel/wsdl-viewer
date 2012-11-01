@@ -22,9 +22,8 @@ After the prolog in your wsdl file. Prolog being the <?xml...> -tag.
 ### Processed ###
 
 Ubuntu example:
-> sudo apt-get install xsltproc
-
-> xsltproc wsdl-viewer.xsl your.wsdl > your.html
+    sudo apt-get install xsltproc
+    xsltproc wsdl-viewer.xsl your.wsdl > your.html
 
 
 Building
@@ -32,7 +31,7 @@ Building
 
 Use the ant build script in the build directory.
 
-> cd build
-> ant
+    cd build
+    ant
 
 This creates a new all-in-one xslt file for you to use as described in usage.
