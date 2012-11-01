@@ -13,7 +13,7 @@ The all-in-one xsl transformation file wsdl-viewer.xsl can either be
 included as a stylesheet in your wsdl file or an xslt processor can be used to
 convert the wsdl file to a static html file. 
 
-### Included in stylesheet ###
+### Stylesheet in WSDL ###
 
 Add the <?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?>
 After the prolog in your wsdl file. Prolog being the <?xml...> -tag.
