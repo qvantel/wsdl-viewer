@@ -22,6 +22,7 @@ After the prolog in your wsdl file. Prolog being the <?xml...> -tag.
 ### Processed ###
 
 Ubuntu example:
+
     sudo apt-get install xsltproc
     xsltproc wsdl-viewer.xsl your.wsdl > your.html
 
