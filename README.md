@@ -26,8 +26,8 @@ Ubuntu example:
 > xsltproc wsdl-viewer.xsl your.wsdl > your.html
 
 
-Buildin
--------
+Building
+--------
 
 Use the ant build script in the build directory.
 
