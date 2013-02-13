@@ -202,8 +202,8 @@
 	<meta name="MSSmartTagsPreventParsing" content="true" />
 
 	<style type="text/css"><xsl:value-of select="$css" disable-output-escaping="yes" /></style>
-    <script type="text/javascript" language="javascript"><xsl:value-of select="$jquery" disable-output-escaping="yes" /></script>
-	<script type="text/javascript" language="javascript"><xsl:value-of select="$js" disable-output-escaping="yes" /></script>
+    <script type="text/javascript" language="javascript"><xsl:value-of select="concat('&lt;![CDATA[', $jquery, ']]&gt;')" disable-output-escaping="yes" /></script>
+	<script type="text/javascript" language="javascript"><xsl:value-of select="concat('&lt;![CDATA[', $js, ']]&gt;')" disable-output-escaping="yes" /></script>
 </head>
 </xsl:template>
 

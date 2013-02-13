@@ -217,7 +217,7 @@ body {
 
 #header #namespace {
     height: 100%;
-    font-size: 12pt;
+    font-size: 10pt;
     float: right;
     margin-right: 1em;
     text-align: right;

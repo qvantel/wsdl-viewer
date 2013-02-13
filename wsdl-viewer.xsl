@@ -389,7 +389,7 @@ body {
 
 #header #namespace {
     height: 100%;
-    font-size: 12pt;
+    font-size: 10pt;
     float: right;
     margin-right: 1em;
     text-align: right;
@@ -2336,10 +2336,10 @@ $(document).ready(function() {
 <xsl:value-of select="$css" disable-output-escaping="yes"/>
 </style>
     <script type="text/javascript" language="javascript">
-<xsl:value-of select="$jquery" disable-output-escaping="yes"/>
+<xsl:value-of select="concat('&lt;![CDATA[', $jquery, ']]&gt;')" disable-output-escaping="yes"/>
 </script>
 	<script type="text/javascript" language="javascript">
-<xsl:value-of select="$js" disable-output-escaping="yes"/>
+<xsl:value-of select="concat('&lt;![CDATA[', $js, ']]&gt;')" disable-output-escaping="yes"/>
 </script>
 </head>
 </xsl:template>
