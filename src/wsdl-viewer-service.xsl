@@ -130,7 +130,7 @@
 
 <xsl:variable name="collapsed-img">
 <![CDATA[
-<svg class="collapsed" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="collapsed" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
 <path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,16V0l8,8L0,16z"/>
 </svg>
@@ -139,7 +139,7 @@
 
 <xsl:variable name="expanded-img">
 <![CDATA[
-<svg class="expanded" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="expanded" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
 <path fill-rule="evenodd" clip-rule="evenodd" fill="#6ECFF5" d="M0,8h16l-8,8L0,8z"/>
 </svg>

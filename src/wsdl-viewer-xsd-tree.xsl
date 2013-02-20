@@ -374,7 +374,7 @@
 		</xsl:variable>
 
 		<xsl:if test="string-length($recursion.test) != 0">
-			<small style="color:blue">
+			
 				<xsl:value-of select="$properties"/>
 				<xsl:variable name="elem-type" select="$consolidated-xsd[@name = $type-local-name and (not(contains(local-name(current()), 'element')) or contains(local-name(), 'Type'))][1]"/>
 				<xsl:if test="string-length($type-local-name) &gt; 0">
@@ -397,7 +397,7 @@
 						</xsl:apply-templates>
 					</xsl:otherwise>
 				</xsl:choose>
-			</small>
+			
 		</xsl:if>
 	</xsl:if>
 </xsl:template>
