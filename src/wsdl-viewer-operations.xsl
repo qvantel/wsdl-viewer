@@ -47,7 +47,7 @@
 <xsl:template match="ws2:interface" mode="operations">
 	<xsl:if test="$ENABLE-PORTTYPE-NAME">
 	<h3>
-	    <span class="anchor" id="{concat($IFACE-PREFIX, generate-id(.))}"></span>
+	    <span class="anchor" id="{concat($IFACE-PREFIX, generate-id(.))}"><xsl:comment></xsl:comment></span>
 		<xsl:value-of select="$IFACE-TEXT"/><xsl:text> </xsl:text>
 		<b><xsl:value-of select="@name"/></b><span class="padder"/><xsl:call-template name="render.source-code-link"/>
 	</h3>
@@ -66,7 +66,7 @@
 <xsl:if test="position() != last()">
 <xsl:attribute name="class">operation</xsl:attribute>
 </xsl:if>
-<span class="anchor" name="{concat($OPERATIONS-PREFIX, generate-id(.))}"></span>
+<span class="anchor" name="{concat($OPERATIONS-PREFIX, generate-id(.))}"><xsl:comment></xsl:comment></span>
 
     <div class="operation_title"><xsl:value-of select="@name"/></div>
 	<div class="value"><xsl:call-template name="render.source-code-link"/></div>
@@ -116,7 +116,7 @@
     <xsl:if test="position() != last()"><xsl:attribute name="style">display: none;</xsl:attribute></xsl:if>
 <!--</xsl:if>-->
 <xsl:if test="$ENABLE-PORTTYPE-NAME">
-<span class="anchor" id="{concat($ANCHOR-PREFIX, generate-id(.))}"></span>
+<span class="anchor" id="{concat($ANCHOR-PREFIX, generate-id(.))}"><xsl:comment></xsl:comment></span>
 <h3>
 	<xsl:value-of select="$PORT-TYPE-TEXT"/>
 	<xsl:text>: </xsl:text><b> <xsl:value-of select="@name"/> </b>
@@ -137,7 +137,7 @@
 <xsl:if test="position() != last()">
 <xsl:attribute name="class">operation</xsl:attribute>
 </xsl:if>
-<span class="anchor" id="{concat($OPERATIONS-PREFIX, generate-id(.))}"></span>
+<span class="anchor" id="{concat($OPERATIONS-PREFIX, generate-id(.))}"><xsl:comment></xsl:comment></span>
 <div class="operation_title"><xsl:value-of select="@name"/></div>
 	<div class="value"><xsl:text>
 </xsl:text><xsl:call-template name="render.source-code-link"/></div>
